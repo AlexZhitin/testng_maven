@@ -27,7 +27,7 @@
                    <version>3.0.0-M3</version>
                    <configuration>
                        <suiteXmlFiles>
-                           <suiteXmlFile>D:\QA\Selenium\testng_maven\src\test\resources\testng.xml</suiteXmlFile>
+                           <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
                        </suiteXmlFiles>
                    </configuration>
 
@@ -35,5 +35,13 @@
            </plugins>
         </pluginManagement>
     </build>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+
 
 </project>
