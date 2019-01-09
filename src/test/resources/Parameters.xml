@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite 1" verbose="2" >
+    <parameter name="email" value="aszhitin@gmail.com"></parameter>
+    <test name="Prioritization">
+        <classes>
+            <class name="LearningTestNG.Parameters">
+            </class>
+        </classes>
+
+    </test>
+</suite>
