@@ -6,11 +6,11 @@ public class AnnotationsTestngClass_2 {
 
     @BeforeSuite
     public void beforeSuite(){
-        System.out.println("Starting TestNG");
+        System.out.println("Starting LoginTest");
     }
     @AfterSuite
     public void afterSuite(){
-        System.out.println("Stopping TestNG");
+        System.out.println("Stopping LoginTest");
     }
 
     @BeforeTest

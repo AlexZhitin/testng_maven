@@ -1,5 +1,6 @@
 package LearningTestNG;
 
+import org.testng.SkipException;
 import org.testng.annotations.*;
 
 public class AnnotationsTestngClass_1 {
@@ -24,6 +25,7 @@ public class AnnotationsTestngClass_1 {
     @Test
     public void Test2() {
         System.out.println("Test 2 inside");
+        throw new SkipException("Test 2 skipped");//throws exception to skip the test
     }
 
 

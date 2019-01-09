@@ -1,9 +1,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="AnnotationsTestSuite" verbose="1" >
+<suite name="Suite 1" verbose="2" >
+<test name="LoginTest">
+    <classes>
+        <class name="LearningTestNG.LoginTest"></class>
+    </classes>
 
-<suite-files>
-    <suite-file path="AnnotationsTestngClass_1.xml"/>
-    <suite-file path="AnnotationsTestngClass_2.xml"/>
-</suite-files>
+</test>
 </suite>
