@@ -20,6 +20,8 @@ public class TestNGPrioritization {
     System.out.println("Navigating");
   }
 
+
+
   @Test(priority = 3, dependsOnMethods = {"Login", "Navigating"})
 
   public void Logout(){
