@@ -36,6 +36,14 @@
         <scope>test</scope>
     </dependency>
 
+    <!-- https://mvnrepository.com/artifact/net.sf.saxon/saxon -->
+    <dependency>
+        <groupId>net.sf.saxon</groupId>
+        <artifactId>saxon</artifactId>
+        <version>8.7</version>
+    </dependency>
+
+
 </dependencies>
 
     <build>
@@ -47,7 +55,7 @@
                    <version>3.0.0-M3</version>
                    <configuration>
                        <suiteXmlFiles>
-                           <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+                           <suiteXmlFile>src/test/resources/ReportsTestNG.xml</suiteXmlFile>
                        </suiteXmlFiles>
                    </configuration>
 
