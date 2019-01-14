@@ -1,41 +1,94 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project name="yourproject"
-         xmlns:ivy="antlib:org.apache.ivy.ant"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd"
->
-
-    <!--
-    ================
-    Build properties
-    ================
-    -->
-    <available classname="org.apache.ivy.Main" property="ivy.installed"/>
-
-    <!--
-    ==========
-    Build main
-    ==========
-    -->
-
-    <target name="build" depends="install-ivy">
-        <ivy:cachepath pathid="build.path">
-            <dependency org="org.testng" name="testng" rev="6.11" conf="default"/>
-        </ivy:cachepath>
-
-        <taskdef name="testng" classpathref="build.path" classname="org.testng.TestNGAntTask" />
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE project [
+        ]>
+<project name="LearningTestNG" default="usage" basedir=".">
+    <!-- ========== Initialize Properties =================================== -->
+    <property environment="env"/>
+    <property name="ws.home" value="${basedir}"/>
+    <property name="ws.jars" value="D:\jar"/>
+    <property name="test.dest" value="${ws.home}/build"/>
+    <property name="test.src" value="${ws.home}/src"/>
+    <property name="ng.result" value="${ws.home}/test-output"/>
+    <!--target name="start-selenium-server">
+    <java jar="${ws.home}/lib/selenium-server.jar"/>
+    </target-->
+    <target name="setClassPath" unless="test.classpath">
+        <path id="classpath_jars">
+            <fileset dir="${ws.jars}" includes="*.jar"/>
+        </path>
+        <pathconvert pathsep=":"
+                     property="test.classpath"
+                     refid="classpath_jars"/>
     </target>
-
-    <!--
-    ===========
-    Build setup
-    ===========
-    -->
-    <target name="install-ivy" description="Install ivy" unless="ivy.installed">
-        <mkdir dir="${user.home}/.ant/lib"/>
-        <get dest="${user.home}/.ant/lib/ivy.jar" src="http://search.maven.org/remotecontent?filepath=org/apache/ivy/ivy/2.4.0/ivy-2.4.0.jar"/>
-        <fail message="Ivy has been installed. Run the build again"/>
+    <target name="init" depends="setClassPath">
+        <tstamp>
+            <format property="start.time" pattern="MM/dd/yyyy hh:mm aa" />
+        </tstamp>
+        <condition property="ANT"
+                   value="${env.ANT_HOME}/bin/ant.bat"
+                   else="${env.ANT_HOME}/bin/ant">
+            <os family="windows" />
+        </condition>
+        <taskdef name="testng" classpath="${test.classpath}"
+                 classname="org.testng.TestNGAntTask" />
     </target>
-
-
+    <!-- all -->
+    <target name="all">
+    </target>
+    <!-- clean -->
+    <target name="clean">
+        <delete dir="${test.dest}"/>
+    </target>
+    <!-- compile -->
+    <target name="compile" depends="init, clean" >
+        <delete includeemptydirs="true" quiet="true">
+            <fileset dir="${test.dest}" includes="**/*"/>
+        </delete>
+        <echo message="making directory..."/>
+        <mkdir dir="${test.dest}"/>
+        <echo message="classpath------: ${test.classpath}"/>
+        <echo message="compiling..."/>
+        <javac
+                debug="true"
+                destdir="${test.dest}"
+                srcdir="${test.src}"
+                target="1.5"
+                classpath="${test.classpath}"
+        >
+        </javac>
+    </target>
+    <!-- build -->
+    <target name="build" depends="init">
+    </target>
+    <!-- run -->
+    <target name="run" depends="compile">
+        <taskdef resource="testngtasks">
+            <classpath>
+                <pathelement path="C:\Users\Alexander\.m2\repository\org\testng\testng\6.14.3\testng-6.14.3.jar"/>
+            </classpath>
+        </taskdef>
+        <!--
+        <testng classpath="${test.classpath}:${test.dest}" groups="fast">
+        <classfileset dir="${test.dest}" includes="example1/*.class"/>
+        </testng>
+        -->
+    </target>
+    <target name="usage">
+        <echo>
+            ant run will execute the test
+        </echo>
+    </target>
+    <path id="test.c">
+        <fileset dir="${ws.jars}" includes="*.jar"/>
+    </path>
+    <target name="generateReports">
+        <mkdir dir="${ws.home}/XSLT_Reports/output"/>
+        <xslt in="${ng.result}/testng-results.xml" style="testng-results.xsl"
+              out="${ws.home}/XSLT_Reports/output/index.html" classpathref="test.c"
+              processor="SaxonLiaison">
+            <param name="testNgXslt.outputDir" expression="${ws.home}/XSLT_Reports/output/"/>
+            <param name="testNgXslt.showRuntimeTotals" expression="true"/>
+        </xslt>
+    </target>
+    <!-- ****************** targets not used ****************** -->
 </project>
