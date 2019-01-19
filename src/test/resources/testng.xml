@@ -1,6 +1,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Suite 1" verbose="2" >
+<suite name="suite1" verbose="2" >
 <test name="LoginTest">
     <classes>
         <class name="LearningTestNG.LoginTest"></class>

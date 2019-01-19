@@ -5,9 +5,9 @@
     <!-- ========== Initialize Properties =================================== -->
     <property environment="env"/>
     <property name="ws.home" value="${basedir}"/>
-    <property name="ws.jars" value="D:\jar"/>
+    <property name="ws.jars" value="C:\Users\Alexander\.m2\repository\org\testng\testng\6.14.3"/>
     <property name="test.dest" value="${ws.home}/build"/>
-    <property name="test.src" value="${ws.home}/src"/>
+    <property name="test.src" value="${ws.home}"/>
     <property name="ng.result" value="${ws.home}/test-output"/>
     <!--target name="start-selenium-server">
     <java jar="${ws.home}/lib/selenium-server.jar"/>
@@ -54,6 +54,7 @@
                 srcdir="${test.src}"
                 target="1.5"
                 classpath="${test.classpath}"
+                includeantruntime="false"
         >
         </javac>
     </target>
@@ -67,6 +68,9 @@
                 <pathelement path="C:\Users\Alexander\.m2\repository\org\testng\testng\6.14.3\testng-6.14.3.jar"/>
             </classpath>
         </taskdef>
+        <testng classpath="${test.classpath}:${test.dest}" suitename="suite1">
+            <xmlfileset dir="${ws.home}" includes="testng.xml"/>
+        </testng>
         <!--
         <testng classpath="${test.classpath}:${test.dest}" groups="fast">
         <classfileset dir="${test.dest}" includes="example1/*.class"/>
