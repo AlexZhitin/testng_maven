@@ -3,7 +3,7 @@
 <suite name="suite1" verbose="2" >
 <test name="LoginTest">
     <classes>
-        <class name="LearningTestNG.LoginTest"></class>
+        <class name="LearningTestNG.Listeners"></class>
     </classes>
 
 </test>
