@@ -1,7 +1,12 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="suite1" verbose="2" >
-<test name="LoginTest">
+
+    <listeners>
+        <listener class-name="LearningTestNG.Listeners2"/>
+    </listeners>
+
+    <test name="LoginTest">
     <classes>
         <class name="LearningTestNG.Listeners"></class>
     </classes>
