@@ -6,9 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="testng-maven" />
         <module name="testng_maven" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ExtentReports" target="1.8" />
+      <module name="newmoduletest" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
