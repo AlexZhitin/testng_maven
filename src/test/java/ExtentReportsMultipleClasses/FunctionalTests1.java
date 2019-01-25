@@ -4,13 +4,13 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class ActualFunctionTest extends BaseTest {
+public class FunctionalTests1 extends BaseTest {
 
   @Test
 
-  public void NoCommerceTitletest() {
+  public void NoCommerceTitletest1() {
 
-    test = extent.createTest("NoCommerceTitletest");
+    test = extent.createTest("NoCommerceTitletest1");
     String title = driver.getTitle();
     System.out.println("title");
     Assert.assertEquals(title, "nopCommerce demo!!!!!!!!!!!");
@@ -19,9 +19,9 @@ public class ActualFunctionTest extends BaseTest {
 
   @Test
 
-  public void NoCommerceLogoTest() {
+  public void NoCommerceLogoTest1() {
 
-    test = extent.createTest("NopCommerceLogoTest");
+    test = extent.createTest("NopCommerceLogoTest1");
     Boolean status = driver.findElement(By.xpath("//img[@alt='nopCommerce demo store']")).isDisplayed();
     Assert.assertTrue(status);
 
@@ -29,15 +29,12 @@ public class ActualFunctionTest extends BaseTest {
 
   @Test
 
-  public void NoCommerceLoginTest() {
-    test = extent.createTest("NopCommerceLoginTest");
+  public void NoCommerceLoginTest1() {
+    test = extent.createTest("NopCommerceLoginTest1");
     test.createNode("Login with valid input");
     Assert.assertTrue(true);
 
     test.createNode("Login with invalid input");
     Assert.assertTrue(true);
-
-
-    Assert.assertTrue(true); //test method will be passed
   }
 }

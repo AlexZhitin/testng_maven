@@ -33,7 +33,7 @@ public class NopCommerceTest {
     @BeforeTest
     public void setExtent() { //All report settings are done here
 
-        htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir") + "/test-output/myReport.html");
+        htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir") + "/src/test/resources/test-output/myReport.html");
 
         htmlReporter.config().setDocumentTitle("Automation Report"); //Title of the report
         htmlReporter.config().setReportName("Functional Report"); //Name of the report
@@ -71,7 +71,7 @@ public class NopCommerceTest {
         test = extent.createTest("NoCommerceTitletest");
         String title = driver.getTitle();
         System.out.println("title");
-        Assert.assertEquals(title, "nopCommerce demo store");
+        Assert.assertEquals(title, "nopCommerce demo!!!!!!!!!!!");
 
     }
 
@@ -79,7 +79,7 @@ public class NopCommerceTest {
 
     public void NoCommerceLogoTest() {
 
-        test = extent.createTest("NoCommerceLogoTest");
+        test = extent.createTest("NopCommerceLogoTest");
         Boolean status = driver.findElement(By.xpath("//img[@alt='nopCommerce demo store']")).isDisplayed();
         Assert.assertTrue(status);
 
@@ -88,13 +88,20 @@ public class NopCommerceTest {
     @Test
 
     public void NoCommerceLoginTest() {
-        test = extent.createTest("NoCommerceLoginTest");
+        test = extent.createTest("NopCommerceLoginTest");
+        test.createNode("Login with valid input");
+        Assert.assertTrue(true);
+
+        test.createNode("Login with invalid input");
+        Assert.assertTrue(true);
+
+
         Assert.assertTrue(true); //test method will be passed
     }
 
     @AfterMethod
 
-    public void tearDown(ITestResult result) throws IOException {
+    public void getResult(ITestResult result) throws IOException {
         if (result.getStatus() == ITestResult.FAILURE) {
             test.log(Status.FAIL, "TEST CASE FAILED IS " + result.getName()); // to add name in extent report
             test.log(Status.FAIL, "TEST CASE FAILED IS " + result.getThrowable()); // to add error/exception in extent report
@@ -114,7 +121,7 @@ public class NopCommerceTest {
         File source = ts.getScreenshotAs(OutputType.FILE);
 
         // after execution, you could see a folder "FailedTestsScreenshots" under src folder
-        String destination = System.getProperty("user.dir") + "/Screenshots/" + screenshotName + dateName + ".png";
+        String destination = System.getProperty("user.dir") + "/src/test/resources/Screenshots/" + screenshotName + dateName + ".png";
         File finalDestination = new File(destination);
         FileUtils.copyFile(source, finalDestination);
         return destination;

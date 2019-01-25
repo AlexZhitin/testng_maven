@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="suite1" verbose="2" >
+
+    <test name="NopCommerceWeb">
+        <classes>
+            <class name="ExtentReportsMultipleClasses.FunctionalTests1"></class>
+            <class name="ExtentReportsMultipleClasses.FunctionalTests2"></class>
+        </classes>
+
+    </test>
+</suite>
