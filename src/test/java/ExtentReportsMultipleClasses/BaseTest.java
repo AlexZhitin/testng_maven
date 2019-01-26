@@ -22,7 +22,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class BaseTest {
-  public ChromeDriver driver = new ChromeDriver();
+
+  ChromeDriver driver = new ChromeDriver();
 
   public static ExtentHtmlReporter htmlReporter;
   public static ExtentReports extent;
@@ -59,7 +60,7 @@ public class BaseTest {
 
    driver = new ChromeDriver();
 
-    driver.get("http://demo.nopcommerce.com/");
+   driver.get("http://demo.nopcommerce.com/");
 
   }
 

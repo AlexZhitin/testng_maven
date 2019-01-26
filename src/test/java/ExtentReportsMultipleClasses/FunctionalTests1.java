@@ -12,8 +12,7 @@ public class FunctionalTests1 extends BaseTest {
 
     test = extent.createTest("NoCommerceTitletest1");
     String title = driver.getTitle();
-    System.out.println("title");
-    Assert.assertEquals(title, "nopCommerce demo!!!!!!!!!!!");
+    Assert.assertEquals(title, "nopCommerce demo store");
 
   }
 

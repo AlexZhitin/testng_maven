@@ -13,7 +13,7 @@ public class FunctionalTests2 extends BaseTest {
     test = extent.createTest("NoCommerceTitletest2");
     String title = driver.getTitle();
     System.out.println("title");
-    Assert.assertEquals(title, "nopCommerce demo!!!!!!!!!!!");
+    Assert.assertEquals(title, "nopCommerce demo store");
 
   }
 
@@ -35,9 +35,6 @@ public class FunctionalTests2 extends BaseTest {
     Assert.assertTrue(true);
 
     test.createNode("Login with invalid input2");
-    Assert.assertTrue(true);
-
-
     Assert.assertTrue(true); //test method will be passed
   }
 }
