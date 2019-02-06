@@ -3,12 +3,14 @@ package MySQLProject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
 
 import java.sql.*;
 
 public class SeleniumDatabaseTesting {
 
-  public static void main(String[] args) {
+
+  public static void main (String[] args) {
 
 //testdata
     String firstname = "Mike";
