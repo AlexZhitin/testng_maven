@@ -11,6 +11,7 @@ public class Listeners2 extends TestListenerAdapter {
     }
 
     public void onTestFailure(ITestResult tr){
+
         System.out.println("Test failed");
     }
 }
