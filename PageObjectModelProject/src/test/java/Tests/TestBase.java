@@ -8,14 +8,11 @@ import org.testng.annotations.Test;
 
 public class TestBase {
 
-  public static WebDriver driver;
+  ChromeDriver driver = new ChromeDriver();
 
   @BeforeSuite
 
   public void setUp() {
-
-    driver = new ChromeDriver();
-
 
     driver.get("https://www.blablacar.com.ua/login/email");
 
@@ -25,6 +22,6 @@ public class TestBase {
 
   public void TeardownTest() {
 
-    TestBase.driver.quit();
+    driver.quit();
   }
 }

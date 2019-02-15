@@ -9,10 +9,11 @@ This class stores all the locators and methods of login page
 import org.openqa.selenium.By;
 import org.openqa.selenium.By.ByXPath;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class LoginPage {
 
-  WebDriver driver;
+ private WebDriver driver;
 
   By email = By.name("login");
   By password = By.name("password");
@@ -27,7 +28,8 @@ public class LoginPage {
 
   public void typeEmail() {
 
-    driver.findElement(email).sendKeys("aszhitin@gmail.com");
+  driver.findElement(email).sendKeys("aszhitin@gmail.com");
+
   }
 
   public void typePassword() {
