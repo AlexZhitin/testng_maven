@@ -13,34 +13,26 @@ import org.openqa.selenium.WebElement;
 
 public class LoginPage {
 
- private WebDriver driver;
+    private WebDriver driver;
 
-  By email = By.name("login");
-  By password = By.name("password");
-  By loginButton = By.xpath("//button[@type='submit']");
-
-
-  public LoginPage(WebDriver driver) {
-
-    this.driver = driver;
-  }
+    By email = By.name("login");
+    By password = By.name("password");
+    By loginButton = By.xpath("//button[@type='submit']");
 
 
-  public void typeEmail() {
+    public LoginPage(WebDriver driver) {
 
-  driver.findElement(email).sendKeys("aszhitin@gmail.com");
+        this.driver = driver;
+    }
 
-  }
 
-  public void typePassword() {
+    public void LoginToBlaBlaCar(String useremail, String userpassword) {
 
-    driver.findElement(password).sendKeys("lenovos820");
+        driver.findElement(email).sendKeys(useremail);
+        driver.findElement(password).sendKeys(userpassword);
+        driver.findElement(loginButton).click();
 
-  }
+        driver.findElement(By.xpath("//*[@class='u-blablacar-logo']"));
 
-  public void clickLogin() {
-
-    driver.findElement(loginButton).click();
-
-  }
+    }
 }

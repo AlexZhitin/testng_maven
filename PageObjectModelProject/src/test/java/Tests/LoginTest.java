@@ -5,19 +5,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
-public class LoginTest extends TestBase{
+public class LoginTest extends TestBase {
 
 
-  @Test
+    @Test
 
-  public void validLogin(){
+    public void validLogin() {
 
-    driver.get("https://www.blablacar.com.ua/login/email");
-
-    LoginPage login = new LoginPage(driver);
-    login.typeEmail();
-    login.typePassword();
-    login.clickLogin();
-  }
+        LoginPage login = new LoginPage(driver);
+        login.LoginToBlaBlaCar("aszhitin@gmail.com", "lenovos820");
+    }
 
 }
