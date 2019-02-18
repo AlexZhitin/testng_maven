@@ -11,6 +11,8 @@ import org.openqa.selenium.By.ByXPath;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.concurrent.TimeUnit;
+
 public class LoginPage {
 
     private WebDriver driver;
@@ -28,6 +30,7 @@ public class LoginPage {
 
     public void LoginToBlaBlaCar(String useremail, String userpassword) {
 
+        driver.get("https://www.blablacar.com.ua/login/email");
         driver.findElement(email).sendKeys(useremail);
         driver.findElement(password).sendKeys(userpassword);
         driver.findElement(loginButton).click();

@@ -14,12 +14,12 @@ public class LoginTest extends TestBase {
 
   @Test
 
-  public void validLogin() {
+  public void validLogin() throws InterruptedException {
 
     test = extent.createTest("BlaBlaLoginTest");
     LoginPage login = new LoginPage(driver);
     login.LoginToBlaBlaCar("aszhitin@gmail.com", "lenovos820");
-    driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+    Thread.sleep(3000);
     Boolean status = driver.findElement(By.xpath("//a[contains(text(),'Панель користувача')]")).isDisplayed();
     Assert.assertTrue(status);
 

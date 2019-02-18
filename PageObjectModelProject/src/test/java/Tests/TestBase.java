@@ -10,6 +10,8 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.safari.SafariDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 
@@ -20,14 +22,14 @@ import java.util.Date;
 
 public class TestBase {
 
-  ChromeDriver driver = new ChromeDriver();
+  public WebDriver driver;
 
   public static ExtentHtmlReporter htmlReporter;
   public static ExtentReports extent;
   public static ExtentTest test;
 
 
-  @BeforeTest
+  @BeforeMethod
   public void setExtent() { //All report settings are done here
 
     htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir") + "/src/test/resources/test-output/myReport.html");
@@ -78,15 +80,20 @@ public class TestBase {
     return destination;
   }
 
-  @BeforeSuite
+  @BeforeTest
+  @Parameters("browser")
 
-  public void setUp() {
-
-    driver.get("https://www.blablacar.com.ua/login/email");
-
+  public void setUp(String browserName) {
+    if (browserName.equalsIgnoreCase("chrome")) {
+      driver = new ChromeDriver();
+    } else if (browserName.equalsIgnoreCase("firefox")) {
+      driver = new FirefoxDriver();
+    } else if (browserName.equalsIgnoreCase("safari")){
+      driver = new SafariDriver();
   }
+}
 
-  @AfterSuite
+  @AfterTest
 
   public void TeardownTest() {
 

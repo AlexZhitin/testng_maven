@@ -1,12 +1,30 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Test" verbose="2" >
+<suite name="Suite" verbose="2" parallel="tests">
 
 
-    <test name="LoginTest">
+    <test name="ChromeTestCases">
+        <parameter name="browser" value="chrome"/>
         <classes>
             <class name="Tests.LoginTest"></class>
         </classes>
 
     </test>
+
+    <test name="FirefoxTestCases">
+        <parameter name = "browser" value="firefox"/>
+        <classes>
+            <class name="Tests.LoginTest"></class>
+        </classes>
+
+    </test>
+
+    <test name="SafariTestCases">
+        <parameter name = "browser" value="safari"/>
+        <classes>
+            <class name="Tests.LoginTest"></class>
+        </classes>
+
+    </test>
+
 </suite>
