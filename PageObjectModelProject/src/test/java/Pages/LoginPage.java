@@ -32,7 +32,5 @@ public class LoginPage {
         driver.findElement(password).sendKeys(userpassword);
         driver.findElement(loginButton).click();
 
-        driver.findElement(By.xpath("//*[@class='u-blablacar-logo']"));
-
     }
 }
