@@ -29,8 +29,17 @@ public class TestBase {
   public static ExtentTest test;
 
 
-  @BeforeMethod
-  public void setExtent() { //All report settings are done here
+  @BeforeTest
+  @Parameters("browser")
+
+  public void setUp(String browserName) {
+    if (browserName.equalsIgnoreCase("chrome")) {
+      driver = new ChromeDriver();
+    } else if (browserName.equalsIgnoreCase("firefox")) {
+      driver = new FirefoxDriver();
+    } else if (browserName.equalsIgnoreCase("safari")) {
+      driver = new SafariDriver();
+    }
 
     htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir") + "/src/test/resources/test-output/myReport.html");
     extent = new ExtentReports();
@@ -46,20 +55,16 @@ public class TestBase {
     extent.setSystemInfo("Tester Name", "Alex");
     extent.setSystemInfo("OS", "Windows");
     extent.setSystemInfo("Browser", "Chrome");
+
   }
 
-  @AfterTest
-
-  public void endReport() {
-    extent.flush();
-  }
 
   @AfterMethod
 
   public void getResult(ITestResult result) throws IOException {
     if (result.getStatus() == ITestResult.FAILURE) {
-      test.log(Status.FAIL, "TEST CASE FAILED IS " + result.getName()); // to add name in extent report
-      test.log(Status.FAIL, "TEST CASE FAILED IS " + result.getThrowable()); // to add error/exception in extent report
+      test.log(Status.FAIL, "TEST CASE FAILED IS " + result.getName() + result.getThrowable()); // to add name in extent report
+      /* test.log(Status.FAIL, "TEST CASE FAILED IS " + result.getThrowable()); // to add error/exception in extent report*/
       String screenshotPath = LoginTest.getScreenshot(driver, result.getName());
       test.addScreenCaptureFromPath(screenshotPath);// adding screen shot
     } else if (result.getStatus() == ITestResult.SKIP) {
@@ -80,23 +85,10 @@ public class TestBase {
     return destination;
   }
 
-  @BeforeTest
-  @Parameters("browser")
+  @AfterTest()
 
-  public void setUp(String browserName) {
-    if (browserName.equalsIgnoreCase("chrome")) {
-      driver = new ChromeDriver();
-    } else if (browserName.equalsIgnoreCase("firefox")) {
-      driver = new FirefoxDriver();
-    } else if (browserName.equalsIgnoreCase("safari")){
-      driver = new SafariDriver();
-  }
-}
-
-  @AfterTest
-
-  public void TeardownTest() {
-
+  public void endReport() {
+    extent.flush();
     driver.quit();
   }
 }

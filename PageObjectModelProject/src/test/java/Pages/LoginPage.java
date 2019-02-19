@@ -17,8 +17,8 @@ public class LoginPage {
 
     private WebDriver driver;
 
-    By email = By.name("login");
-    By password = By.name("password");
+    By email = By.xpath("//input[@placeholder='Email']");
+    By password = By.xpath("//input[@placeholder='Password']");
     By loginButton = By.xpath("//button[@type='submit']");
 
 
@@ -28,9 +28,9 @@ public class LoginPage {
     }
 
 
-    public void LoginToBlaBlaCar(String useremail, String userpassword) {
+    public void LoginToCusp(String useremail, String userpassword) {
 
-        driver.get("https://www.blablacar.com.ua/login/email");
+        driver.get("https://cmp.seriea.bkstg.it/login");
         driver.findElement(email).sendKeys(useremail);
         driver.findElement(password).sendKeys(userpassword);
         driver.findElement(loginButton).click();
