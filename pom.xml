@@ -12,6 +12,7 @@
         <module>MyMaven</module>
         <module>PageObjectModelProject</module>
         <module>Listeners</module>
+        <module>POM</module>
     </modules>
 
     <dependencies>

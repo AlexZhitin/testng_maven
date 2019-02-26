@@ -9,6 +9,7 @@
         <module name="Listeners" />
         <module name="MyMaven" />
         <module name="PageObjectModelProject" />
+        <module name="POM" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
