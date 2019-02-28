@@ -2,28 +2,41 @@ package Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class BasePage {
 
 
 
   protected WebDriver driver;
-  private By signInButton = By.xpath("//button[@type='submit']");
+
+  /*Create elements with locators*/
+
+  private By email = By.xpath("//input[@placeholder='Email']");
+  private By password = By.xpath("//input[@placeholder='Password']");
+  private By loginButton = By.xpath("//button[@type='submit']");
+
+
 
   public BasePage(WebDriver driver) {
     this.driver = driver;
   }
 
-  public SignInPage clickSignInBtn() {
+
+  public void typeEmail(String useremail){
+    System.out.println("Type the email address on the Sign in page");
+    driver.findElement(email).sendKeys();
+
+  }
+
+  public void clickSignInBtn() {
 
     System.out.println("Click on sign in button");
-    WebElement signInBtnElement = driver.findElement(signInButton);
-    if (signInBtnElement.isDisplayed() || signInBtnElement.isEnabled())
-      signInBtnElement.click();
-    else
-      System.out.println("Element not found");
-    return new SignInPage(driver);
+    driver.findElement(loginButton).click();
 
+  }
+
+  public void typePassword(String userpassword){
+    System.out.println("Type in the password on the Sign in page");
+    driver.findElement(password).sendKeys("12345678");
   }
 }

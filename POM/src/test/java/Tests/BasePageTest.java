@@ -19,20 +19,18 @@ public class BasePageTest extends TestBase {
   }
 
   @Test
-  public void clickSignInBtn() {
-    System.out.println("Home page test...");
-    BasePage basePage = new BasePage(driver);
-    Assert.assertTrue(basePage.verifyBasePageTitle(), "Home page title doesn't match");
+
+  public void TypeInEmailTest(){
+    ExtentTestManager.getTest().log(Status.INFO, "Started TypeInEmailTest()");
+    BasePage putinemail = new BasePage(driver);
+    putinemail.typeEmail("john.brown@bkstg.com");
+
   }
 
-  @Test
-  public void baseTest1() {
-    ExtentTestManager.getTest().log(Status.INFO, "Hellooo started base test1");
-    System.out.println("Hey im in test1 test");
-    ExtentTestManager.getTest().log(Status.INFO, "Hey im in base test1 1");
-    ExtentTestManager.getTest().log(Status.INFO, "Hey im in base test1 2");
-    ExtentTestManager.getTest().log(Status.INFO, "Hey im in base test1 3");
-    ExtentTestManager.getTest().log(Status.INFO, "Hey im in base test1 4");
-  }
+  public void SignInTest() {
+    ExtentTestManager.getTest().log(Status.INFO, "Started SignInTest()");
+    BasePage signin = new BasePage(driver);
+    signin.clickSignInBtn();
 
+  }
 }
