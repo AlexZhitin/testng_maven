@@ -3,13 +3,13 @@ package Base;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 
 public class TestBase {
 
   private WebDriver driver;
+  private String osname = System.getProperty("os.name");
+  private static String driverPath = System.getProperty("user.dir") + "/src/main/resources/";
 
   public WebDriver getDriver() {
     return driver;
@@ -33,6 +33,11 @@ public class TestBase {
 
   private WebDriver initChromeDriver(String appURL) {
     System.out.println("Launching google chrome with new profile..");
+    if (osname.startsWith("Mac OS X")) {
+      System.setProperty("webdriver.chrome.driver", driverPath + "chromedriver");
+    } else if (osname.startsWith("Windows")) {
+      System.setProperty("webdriver.chrome.driver", driverPath + "chromedriver.exe");
+    }
     WebDriver driver = new ChromeDriver();
     driver.manage().window().maximize();
     driver.navigate().to(appURL);
@@ -42,6 +47,11 @@ public class TestBase {
 
   private WebDriver initFirefoxDriver(String appURL) {
     System.out.println("Launching Firefox browser..");
+    if (osname.startsWith("Mac OS X")) {
+      System.setProperty("webdriver.gecko.driver", driverPath + "geckodriver");
+    } else if (osname.startsWith("Windows")) {
+      System.setProperty("webdriver.gecko.driver", driverPath + "geckodriver.exe");
+    }
     WebDriver driver = new FirefoxDriver();
     driver.manage().window().maximize();
     driver.navigate().to(appURL);
