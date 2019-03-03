@@ -17,48 +17,77 @@ import java.util.concurrent.TimeUnit;
 
 public class SignInTest extends TestBase {
 
-  private WebDriver driver;
+    private WebDriver driver;
 
-  @BeforeMethod
-  public void setUp() {
-    driver = getDriver();
-  }
+    @BeforeMethod
+    public void setUp() {
+        driver = getDriver();
+    }
 
-  @Test
+    @Test
 
-  public void ValidLogin() {
-    ExtentTestManager.getTest().log(Status.INFO, "Started ValidLogin()");
+    public void LoginSuccessful() {
+        ExtentTestManager.getTest().log(Status.INFO, "Started LoginSuccessful()");
 
-    SignInPage inputEmail = new SignInPage(driver);
-    SignInPage inputPassword = new SignInPage(driver);
-    SignInPage signin = new SignInPage(driver);
-    FansPage logo = new FansPage(driver);
-
-
-    inputEmail.typeEmail("john.brown@bkstg.com");
-    inputPassword.typePassword("12345678");
-    signin.clickSignInBtn();
-    driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-    Assert.assertTrue(logo.logoIsDisplayed());
-    System.out.println("Test completed");
-  }
-
-  @Test
-
-  public void ValidLogin1() {
-    ExtentTestManager.getTest().log(Status.INFO, "Started ValidLogin1()");
-
-    SignInPage inputEmail = new SignInPage(driver);
-    SignInPage inputPassword = new SignInPage(driver);
-    SignInPage signin = new SignInPage(driver);
-    FansPage logo = new FansPage(driver);
+        SignInPage inputEmail = new SignInPage(driver);
+        SignInPage inputPassword = new SignInPage(driver);
+        SignInPage signin = new SignInPage(driver);
+        FansPage logo = new FansPage(driver);
 
 
-    inputEmail.typeEmail("john.brown@bkstg.com");
-    inputPassword.typePassword("1234567");
-    signin.clickSignInBtn();
-    driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-    Assert.assertTrue(logo.logoIsDisplayed());
+        inputEmail.typeEmail("john.brown@bkstg.com");
+        inputPassword.typePassword("12345678");
+        signin.clickSignInBtn();
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        Assert.assertTrue(logo.logoIsDisplayed());
+        System.out.println("Test completed");
+    }
 
-  }
+    @Test
+
+    public void LoginFailed() {
+        ExtentTestManager.getTest().log(Status.INFO, "Started LoginFailed()");
+
+        SignInPage inputEmail = new SignInPage(driver);
+        SignInPage inputPassword = new SignInPage(driver);
+        SignInPage signin = new SignInPage(driver);
+        FansPage logo = new FansPage(driver);
+
+
+        inputEmail.typeEmail("john.brown@bkstg.com");
+        inputPassword.typePassword("wrong password");
+        signin.clickSignInBtn();
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
+        try {
+            if (logo.logoIsDisplayed()) {
+                Assert.fail();
+            } else {
+                throw new NoSuchElementException("????????????");
+            }
+        } catch (NoSuchElementException e) {
+            Assert.assertTrue(true);
+        }
+    }
+
+
+    @Test
+
+    public void LoginError() {
+        ExtentTestManager.getTest().log(Status.INFO, "Started loginError()");
+
+        SignInPage inputEmail = new SignInPage(driver);
+        SignInPage inputPassword = new SignInPage(driver);
+        SignInPage signin = new SignInPage(driver);
+        SignInPage loginError = new SignInPage(driver);
+
+
+        inputEmail.typeEmail("john.brown@bkstg.com");
+        inputPassword.typePassword("wrong password");
+        signin.clickSignInBtn();
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        Assert.assertTrue(loginError.LoginError());
+
+
+    }
 }

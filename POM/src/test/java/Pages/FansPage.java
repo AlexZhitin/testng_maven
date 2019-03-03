@@ -13,7 +13,7 @@ public class FansPage {
   /*Create elements with locators*/
 
   private By logo = By.xpath("//div[@class='sidebar-logo']");
-  boolean status;
+  boolean logoElement;
 
 
   public FansPage(WebDriver driver) {
@@ -22,6 +22,6 @@ public class FansPage {
 
   public boolean logoIsDisplayed() {
     WebElement element = driver.findElement(logo);
-    return status = element.isDisplayed();
+    return logoElement = element.isDisplayed();
   }
 }

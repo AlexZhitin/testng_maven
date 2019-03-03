@@ -2,6 +2,7 @@ package Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class SignInPage {
 
@@ -14,6 +15,8 @@ public class SignInPage {
   private By email = By.xpath("//input[@placeholder='Email']");
   private By password = By.xpath("//input[@placeholder='Password']");
   private By loginButton = By.xpath("//button[@type='submit']");
+  private By error = By.xpath("//div[@class='login__error']");
+  private boolean loginError;
 
 
 
@@ -38,5 +41,10 @@ public class SignInPage {
     System.out.println("Click on sign in button");
     driver.findElement(loginButton).click();
 
+  }
+
+  public boolean LoginError(){
+    WebElement element = driver.findElement(error);
+    return loginError = element.isDisplayed();
   }
 }
