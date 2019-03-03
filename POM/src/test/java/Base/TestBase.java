@@ -59,7 +59,7 @@ public class TestBase {
   }
 
   @Parameters({"browserType", "appURL"})
-  @BeforeClass
+  @BeforeMethod
   public void initializeTestBaseSetup(String browserType, String appURL) {
     try {
       setDriver(browserType, appURL);
@@ -69,7 +69,7 @@ public class TestBase {
     }
   }
 
-  @AfterClass
+  @AfterMethod
   public void tearDown() {
     driver.quit();
   }

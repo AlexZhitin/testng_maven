@@ -19,7 +19,7 @@ public class SignInTest extends TestBase {
 
   private WebDriver driver;
 
-  @BeforeClass
+  @BeforeMethod
   public void setUp() {
     driver = getDriver();
   }
@@ -43,8 +43,7 @@ public class SignInTest extends TestBase {
     System.out.println("Test completed");
   }
 
-  /*@Test
-
+  @Test
 
   public void ValidLogin1() {
     ExtentTestManager.getTest().log(Status.INFO, "Started ValidLogin1()");
@@ -56,10 +55,10 @@ public class SignInTest extends TestBase {
 
 
     inputEmail.typeEmail("john.brown@bkstg.com");
-    inputPassword.typePassword("12345678");
+    inputPassword.typePassword("1234567");
     signin.clickSignInBtn();
     driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     Assert.assertTrue(logo.logoIsDisplayed());
 
-  }*/
+  }
 }
