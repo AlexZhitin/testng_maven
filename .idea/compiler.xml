@@ -10,6 +10,7 @@
         <module name="MyMaven" />
         <module name="PageObjectModelProject" />
         <module name="POM" />
+        <module name="TestProject" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
