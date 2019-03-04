@@ -152,6 +152,12 @@
             <version>3.0.0-M3</version>
             <type>maven-plugin</type>
         </dependency>
+        <dependency>
+            <groupId>org.apache.xbean</groupId>
+            <artifactId>xbean-reflect</artifactId>
+            <version>3.4</version>
+            <scope>test</scope>
+        </dependency>
 
 
     </dependencies>

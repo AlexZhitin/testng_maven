@@ -84,7 +84,7 @@ public class SignInTest extends TestBase {
   @Test
 
   public void LoginError() {
-    ExtentTestManager.getTest().log(Status.INFO, "Started loginError()");
+    ExtentTestManager.getTest().log(Status.INFO, "Started LoginError()");
 
     SignInPage inputEmail = new SignInPage(driver);
     SignInPage inputPassword = new SignInPage(driver);
