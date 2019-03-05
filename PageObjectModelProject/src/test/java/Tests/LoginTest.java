@@ -18,7 +18,6 @@ public class LoginTest extends TestBase {
 
 
 
-
   public void validLogin() throws InterruptedException {
 
     test = extent.createTest("LoginTest");
