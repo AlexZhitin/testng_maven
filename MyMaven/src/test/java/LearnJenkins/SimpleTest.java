@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 
     public class SimpleTest {
+        
 
         ChromeDriver driver = new ChromeDriver();
 
