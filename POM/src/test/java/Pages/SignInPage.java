@@ -17,6 +17,8 @@ public class SignInPage {
   private By loginButton = By.xpath("//button[@type='submit']");
   private By error = By.xpath("//div[@class='login__error']");
   private boolean loginError;
+  private String validEmail = "john.brown@bkstg.com";
+  private String validPassword = "12345678";
 
 
 
@@ -46,5 +48,12 @@ public class SignInPage {
   public boolean LoginError(){
     WebElement element = driver.findElement(error);
     return loginError = element.isDisplayed();
+  }
+
+  public void Login(){
+
+    driver.findElement(email).sendKeys(validEmail);
+    driver.findElement(password).sendKeys(validPassword);
+    driver.findElement(loginButton).click();
   }
 }
