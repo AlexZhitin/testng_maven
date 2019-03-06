@@ -12,7 +12,7 @@
     <test verbose="2" preserve-order="true" name="Chrome test cases">
         <classes>
             <class name="Tests.SignInTest"/>
-            <class name="Tests.Test"/>
+            <!--<class name="Tests.Test"/>-->
             <!--<class name="Tests.SignInTest"/>-->
         </classes>
     </test>

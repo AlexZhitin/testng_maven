@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
-public class FansPage {
+public class MainPage {
 
   protected WebDriver driver;
 
@@ -16,7 +16,7 @@ public class FansPage {
   boolean logoElement;
 
 
-  public FansPage(WebDriver driver) {
+  public MainPage(WebDriver driver) {
     this.driver = driver;
   }
 

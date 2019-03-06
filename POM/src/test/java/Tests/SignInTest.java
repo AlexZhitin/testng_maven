@@ -2,14 +2,11 @@ package Tests;
 
 import Base.ExtentTestManager;
 import Base.TestBase;
-import Pages.FansPage;
+import Pages.MainPage;
 import Pages.SignInPage;
 import com.aventstack.extentreports.Status;
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -32,7 +29,7 @@ public class SignInTest extends TestBase {
     SignInPage inputEmail = new SignInPage(driver);
     SignInPage inputPassword = new SignInPage(driver);
     SignInPage signin = new SignInPage(driver);
-    FansPage logo = new FansPage(driver);
+    MainPage logo = new MainPage(driver);
 
 
     inputEmail.typeEmail("john.brown@bkstg.com");
@@ -47,11 +44,10 @@ public class SignInTest extends TestBase {
         System.out.println("Logo is not displayed");
       }
     } catch (Throwable e) {
-      Assert.assertTrue(false);
+      Assert.fail();
     }
     System.out.println("Test completed");
   }
-
 
 
   @Test
@@ -62,7 +58,7 @@ public class SignInTest extends TestBase {
     SignInPage inputEmail = new SignInPage(driver);
     SignInPage inputPassword = new SignInPage(driver);
     SignInPage signin = new SignInPage(driver);
-    FansPage logo = new FansPage(driver);
+    MainPage logo = new MainPage(driver);
 
 
     inputEmail.typeEmail("john.brown@bkstg.com");
@@ -72,7 +68,7 @@ public class SignInTest extends TestBase {
 
     try {
       if (logo.logoIsDisplayed()) {
-        Assert.assertTrue(false);
+        Assert.fail();
       } else {
         System.out.println("Logo is not displayed");
       }
@@ -106,7 +102,54 @@ public class SignInTest extends TestBase {
         System.out.println("Logo is not displayed");
       }
     } catch (Throwable e) {
-      Assert.assertTrue(false);
+      Assert.fail();
+    }
+    System.out.println("Test completed");
+  }
+
+  @Test
+
+  public void NoEmailInput() {
+    ExtentTestManager.getTest().log(Status.INFO, "Started NoEmailInput()");
+
+    SignInPage inputPassword = new SignInPage(driver);
+    SignInPage signInBtn = new SignInPage(driver);
+
+
+    inputPassword.typePassword("wrong password");
+    driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+
+    try {
+      if (signInBtn.SignInBtnEnabled()) {
+        Assert.fail("Sign In button is enabled. It shouldn't be enabled.");
+      } else {
+        System.out.println("Sign In button is disabled as expected");
+      }
+    } catch (Throwable e) {
+      Assert.assertTrue(true);
+    }
+    System.out.println("Test completed");
+  }
+
+  @Test
+
+  public void NoPasswordInput() {
+    ExtentTestManager.getTest().log(Status.INFO, "Started NoEmailInput()");
+
+    SignInPage signInBtn = new SignInPage(driver);
+    SignInPage inputEmail = new SignInPage(driver);
+
+    inputEmail.typeEmail("john.brown@bkstg.com");
+    driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+
+    try {
+      if (signInBtn.SignInBtnEnabled()) {
+        Assert.fail("Sign In button is enabled. It shouldn't be enabled.");
+      } else {
+        System.out.println("Sign In button is disabled as expected");
+      }
+    } catch (Throwable e) {
+      Assert.assertTrue(true);
     }
     System.out.println("Test completed");
   }
