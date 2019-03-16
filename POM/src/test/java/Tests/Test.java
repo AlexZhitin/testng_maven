@@ -19,6 +19,7 @@ public class Test extends TestBase {
     driver = getDriver();
   }
 
+
   @org.testng.annotations.Test
 
   public void SomeTestMethod(){
