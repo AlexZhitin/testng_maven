@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Chrome suite" parallel="methods" thread-count="2">
+
+    <listeners>
+        <listener class-name="Test"/>
+    </listeners>
+
+    <parameter name="browserType" value="chrome"/>
+    <parameter name="appURL" value="https://www.w3schools.com"/>
+
+    <test verbose="2" preserve-order="true" name="Chrome test cases">
+        <classes>
+            <class name="TestClass">
+                <!--<methods>
+                    <include name="FullNameFieldIsDisplayed"/>
+                    &lt;!&ndash;<include name="FirstNameCanContainMultipleWords"/>&ndash;&gt;
+                    &lt;!&ndash;<include name="ErrorUsernameUnderscoreDotBeginning"/>
+                    <include name="ErrorUsernameUnderscoreDotEnd"/>
+                    <include name="ErrorUsernameContainsSpace"/>
+                    <include name="UsernameUnderscoreDotAllowedWithin"/>&ndash;&gt;
+                    &lt;!&ndash;<include name="UsernameContainsSpecSymbols"/>
+                    <include name="FirstNameCanContainASCII"/>
+                    <include name="FirstNameEndsWithSpace"/>
+                    <include name="FirstNameBeginsWithSpace"/>
+                    <include name="FirstNameContainsEmoji"/>
+                    <include name="FirstNameContainsSpecialSymbols"/>&ndash;&gt;
+                </methods>-->
+            </class>
+        </classes>
+    </test>
+</suite>
