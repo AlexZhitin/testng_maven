@@ -7,9 +7,9 @@
     </listeners>
 
     <!--<parameter name="browserType" value="chrome"/>-->
-    <parameter name="appURL" value="https://www.w3schools.com"/>
 
     <test verbose="2" preserve-order="true" name="Firefox test cases">
+        <parameter name="appURL" value="https://www.w3schools.com"/>
         <parameter name="browserType" value="firefox"/>
         <classes>
             <class name="TestClass">
@@ -32,6 +32,7 @@
     </test>
 
     <test verbose="2" preserve-order="true" name="Chrome test cases">
+        <parameter name="appURL" value="https://www.w3schools.com"/>
         <parameter name="browserType" value="chrome"/>
         <classes>
             <class name="TestClass">
