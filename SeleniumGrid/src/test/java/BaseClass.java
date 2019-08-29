@@ -13,6 +13,7 @@ public class BaseClass implements ITestNGListener {
 
     public static ThreadLocal<WebDriver> dr = new ThreadLocal<>();
     private WebDriver driver;
+
     private String osname = System.getProperty("os.name");
     private static String driverPath = System.getProperty("user.dir") + "/src/main/resources/";
 
@@ -21,6 +22,7 @@ public class BaseClass implements ITestNGListener {
     }
 
     private void setDriver(String browserType, String appURL) {
+
         switch (browserType) {
             case "chrome":
                 driver = initChromeDriver(appURL);
@@ -61,6 +63,7 @@ public class BaseClass implements ITestNGListener {
             System.setProperty("webdriver.gecko.driver", driverPath + "geckodriver.exe");
         }
         WebDriver driver = new FirefoxDriver();
+        setWebDriver(driver);
         driver.manage().window().maximize();
         driver.navigate().to(appURL);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
@@ -70,6 +73,7 @@ public class BaseClass implements ITestNGListener {
     private WebDriver initSafariDriver(String appURL) {
         System.out.println("Launching Safari browser..");
         WebDriver driver = new SafariDriver();
+        setWebDriver(driver);
         driver.manage().window().maximize();
         driver.navigate().to(appURL);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
@@ -79,6 +83,7 @@ public class BaseClass implements ITestNGListener {
     @Parameters({"browserType", "appURL"})
     @BeforeMethod
     public void initializeTestBaseSetup(String browserType, String appURL) {
+
         try {
             setDriver(browserType, appURL);
         } catch (Exception e) {
@@ -96,4 +101,3 @@ public class BaseClass implements ITestNGListener {
         dr.set(null);
     }
 }
-
