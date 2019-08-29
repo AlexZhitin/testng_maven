@@ -13,7 +13,6 @@
         <module>PageObjectModelProject</module>
         <module>Listeners</module>
         <module>POM</module>
-        <module>SeleniumGrid</module>
     </modules>
 
     <dependencies>
