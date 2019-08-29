@@ -15,19 +15,19 @@ public class TestClass extends BaseClass {
     @Test
 
     public void test_01() throws InterruptedException {
-        getDriver().findElement(By.xpath("//*[@id=\"mySidenav\"]/div/a[1]")).click();
-        Thread.sleep(2000);
-        getDriver().findElement(By.xpath("//*[@id=\"topnav\"]/div/div[1]/a[4]")).click();
-        Thread.sleep(2000);
+        driver.findElement(By.xpath("//*[@id=\"mySidenav\"]/div/a[1]")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//*[@id=\"topnav\"]/div/div[1]/a[4]")).click();
+        Thread.sleep(1000);
     }
 
     @Test
 
     public void test_02() throws InterruptedException {
-        getDriver().findElement(By.xpath("//*[@id=\"mySidenav\"]/div/a[1]")).click();
-        Thread.sleep(2000);
-        getDriver().findElement(By.xpath("//*[@id=\"topnav\"]/div/div[1]/a[4]")).click();
-        Thread.sleep(2000);
+        driver.findElement(By.xpath("//*[@id=\"mySidenav\"]/div/a[1]")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//*[@id=\"topnav\"]/div/div[1]/a[4]")).click();
+        Thread.sleep(1000);
     }
 
 }

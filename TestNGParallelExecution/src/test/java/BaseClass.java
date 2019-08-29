@@ -61,6 +61,7 @@ public class BaseClass implements ITestNGListener {
             System.setProperty("webdriver.gecko.driver", driverPath + "geckodriver.exe");
         }
         WebDriver driver = new FirefoxDriver();
+        setWebDriver(driver);
         driver.manage().window().maximize();
         driver.navigate().to(appURL);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
@@ -70,6 +71,7 @@ public class BaseClass implements ITestNGListener {
     private WebDriver initSafariDriver(String appURL) {
         System.out.println("Launching Safari browser..");
         WebDriver driver = new SafariDriver();
+        setWebDriver(driver);
         driver.manage().window().maximize();
         driver.navigate().to(appURL);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
