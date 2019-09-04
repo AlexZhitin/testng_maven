@@ -13,6 +13,7 @@
         <module>PageObjectModelProject</module>
         <module>Listeners</module>
         <module>POM</module>
+        <module>selenium_framework</module>
     </modules>
 
     <dependencies>
