@@ -1,3 +1,5 @@
+package Base;
+
 import org.openqa.selenium.Capabilities;
 
 public class CapabilityFactory {
@@ -6,7 +8,7 @@ public class CapabilityFactory {
     public Capabilities getCapabilities (String browser) {
         if (browser.equals("chrome"))
             capabilities = OptionsManager.getChromeOptions();
-        else
+        if (browser.equals("firefox"))
             capabilities = OptionsManager.getFirefoxOptions();
         return capabilities;
     }

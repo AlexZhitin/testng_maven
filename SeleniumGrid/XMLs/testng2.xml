@@ -7,30 +7,28 @@
         <!--<listener class-name="Base.RetryListener"/>-->
     </listeners>
 
-    <parameter name="appURL" value="https://google.com"/>
+    <parameter name="appURL" value="https://dev-influencer.seriea.bkstg.it"/>
 
-    <test name="Chrome_tests" parallel="methods" thread-count="3">
+    <test name="Chrome_tests" parallel="methods" thread-count="2">
         <parameter name="browser" value="chrome"/>
         <classes>
-            <class name="Tests.FirstTest">
+            <class name="Tests.NotifyCuspTest">
                 <methods>
-                    <include name="GOOGLE1" />
-                    <include name="GOOGLE2" />
-                    <include name="GOOGLE3" />
+                    <include name="FullNameFieldIsDisplayed" />
+                    <include name="SendButtonIsDisabledIfDescriptionIsEmpty" />
                 </methods>
             </class>
         </classes>
     </test> <!-- First Test -->
 
 
-    <test name="Firefox_tests"  parallel="methods" thread-count="3">
+    <test name="Firefox_tests"  parallel="methods" thread-count="2">
         <parameter name="browser" value="firefox"/>
         <classes>
-            <class name="Tests.FirstTest">
+            <class name="Tests.NotifyCuspTest">
                 <methods>
-                    <include name="GOOGLE1" />
-                    <include name="GOOGLE2" />
-                    <include name="GOOGLE3" />
+                    <include name="FullNameFieldIsDisplayed" />
+                    <include name="SendButtonIsDisabledIfDescriptionIsEmpty" />
                 </methods>
             </class>
         </classes>
