@@ -28,6 +28,8 @@ public class OptionsManager {
         profile.setPreference("network.proxy.type", 0);
         //Set Firefox profile to capabilities
         options.setCapability(FirefoxDriver.PROFILE, profile);*/
+        FirefoxProfile profile = new FirefoxProfile();
+
         return options;
     }
 }

@@ -1,6 +1,7 @@
 package Base;
 
 import org.openqa.selenium.Capabilities;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class CapabilityFactory {
     public Capabilities capabilities;

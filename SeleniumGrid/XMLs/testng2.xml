@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="2" name="Suite" parallel="tests" >
+<suite thread-count="2" name="Suite" parallel="tests">
 
     <listeners>
         <listener class-name="Base.TestListener"/>
@@ -18,6 +18,14 @@
                     <include name="SendButtonIsDisabledIfDescriptionIsEmpty" />
                 </methods>
             </class>
+
+            <class name="Tests.UsersPageTest">
+                <methods>
+                    <include name="AddUserDialogisDisplayed" />
+                    <include name="AddUserButtonisDisplayed" />
+                </methods>
+            </class>
+
         </classes>
     </test> <!-- First Test -->
 
@@ -31,6 +39,14 @@
                     <include name="SendButtonIsDisabledIfDescriptionIsEmpty" />
                 </methods>
             </class>
+
+            <class name="Tests.UsersPageTest">
+                <methods>
+                    <include name="NamesOrderChangedDescending" />
+                    <include name="UsernamesOrderChangedDescending" />
+                </methods>
+            </class>
+
         </classes>
     </test> <!-- Second Test -->
 
