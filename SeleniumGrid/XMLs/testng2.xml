@@ -64,7 +64,6 @@
                     <include name="SendButtonIsDisabledIfDescriptionIsEmpty" />
                 </methods>
             </class>
-
             <class name="Tests.UsersPageTest">
                 <methods>
                     <include name="AddUserDialogisDisplayed" />

@@ -34,7 +34,6 @@ public class TestBase {
     @AfterMethod
     public void tearDown() {
         getDriver().quit();
-        getDriver().close();
     }
 
     @AfterClass
