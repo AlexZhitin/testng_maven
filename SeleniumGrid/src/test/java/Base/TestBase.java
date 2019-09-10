@@ -23,7 +23,6 @@ public class TestBase {
         driver.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilityFactory.getCapabilities(browser, browser_version, platform)));
         getDriver().manage().window().maximize();
         getDriver().navigate().to(appURL);
-        getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
     public WebDriver getDriver() {
@@ -34,11 +33,6 @@ public class TestBase {
     @AfterMethod
     public void tearDown() {
         getDriver().quit();
-    }
-
-    @AfterMethod
-    void terminate () {
-        //Remove the ThreadLocalMap element
         driver.remove();
     }
 }

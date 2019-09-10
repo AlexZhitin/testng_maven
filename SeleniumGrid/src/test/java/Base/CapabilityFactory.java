@@ -9,7 +9,6 @@ import org.openqa.selenium.safari.SafariOptions;
 
 public class CapabilityFactory {
     public Capabilities capabilities;
-    public DesiredCapabilities caps;
 
     public Capabilities getCapabilities (String browser, String browser_version, String platform) {
         if (browser.equals("chrome"))
