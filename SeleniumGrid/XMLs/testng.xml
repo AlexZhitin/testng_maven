@@ -1,32 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Chrome suite" parallel="methods" thread-count="2">
+<suite thread-count="2" name="Suite" parallel="tests">
 
     <listeners>
-        <listener class-name="BaseClass"/>
+        <listener class-name="Base.TestListener"/>
+        <!--<listener class-name="Base.RetryListener"/>-->
     </listeners>
 
-    <parameter name="browserType" value="chrome"/>
-    <parameter name="appURL" value="https://www.w3schools.com"/>
+    <parameter name="appURL" value="https://www.google.com"/>
 
-    <test verbose="2" preserve-order="true" name="Chrome test cases">
+    <test name="Chrome_tests"  parallel="classes" thread-count="5">
+        <parameter name="browser" value="chrome"/>
+        <parameter name="browser_version" value="76.0"/>
+        <parameter name="platform" value="mac"/>
         <classes>
-            <class name="TestClass">
-                <!--<methods>
-                    <include name="FullNameFieldIsDisplayed"/>
-                    &lt;!&ndash;<include name="FirstNameCanContainMultipleWords"/>&ndash;&gt;
-                    &lt;!&ndash;<include name="ErrorUsernameUnderscoreDotBeginning"/>
-                    <include name="ErrorUsernameUnderscoreDotEnd"/>
-                    <include name="ErrorUsernameContainsSpace"/>
-                    <include name="UsernameUnderscoreDotAllowedWithin"/>&ndash;&gt;
-                    &lt;!&ndash;<include name="UsernameContainsSpecSymbols"/>
-                    <include name="FirstNameCanContainASCII"/>
-                    <include name="FirstNameEndsWithSpace"/>
-                    <include name="FirstNameBeginsWithSpace"/>
-                    <include name="FirstNameContainsEmoji"/>
-                    <include name="FirstNameContainsSpecialSymbols"/>&ndash;&gt;
-                </methods>-->
+            <class name="Tests.FirstTest">
+                <methods>
+                    <include name="GOOGLE1" />
+                    <include name="GOOGLE2" />
+                    <include name="GOOGLE3" />
+                </methods>
             </class>
         </classes>
-    </test>
+    </test> <!-- Second Test -->
+
+
+    <test name="Firefox_tests" parallel="classes" thread-count="5">
+        <parameter name="browser" value="firefox"/>
+        <parameter name="browser_version" value="69.0"/>
+        <parameter name="platform" value="mac"/>
+        <classes>
+            <class name="Tests.FirstTest">
+                <methods>
+                    <include name="GOOGLE1"/>
+                    <include name="GOOGLE2"/>
+                    <!--<include name="GOOGLE3" />-->
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Second Test -->
 </suite>
