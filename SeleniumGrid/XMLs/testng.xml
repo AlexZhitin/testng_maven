@@ -9,7 +9,7 @@
 
     <parameter name="appURL" value="https://www.google.com"/>
 
-    <test name="Chrome_tests"  parallel="classes" thread-count="5">
+    <test name="Chrome_tests"  parallel="methods" thread-count="1">
         <parameter name="browser" value="chrome"/>
         <parameter name="browser_version" value="76.0"/>
         <parameter name="platform" value="mac"/>
@@ -25,9 +25,24 @@
     </test> <!-- Second Test -->
 
 
-    <test name="Firefox_tests" parallel="classes" thread-count="5">
+    <test name="Firefox_tests" parallel="methods" thread-count="1">
         <parameter name="browser" value="firefox"/>
         <parameter name="browser_version" value="69.0"/>
+        <parameter name="platform" value="mac"/>
+        <classes>
+            <class name="Tests.FirstTest">
+                <methods>
+                    <include name="GOOGLE1"/>
+                    <include name="GOOGLE2"/>
+                    <!--<include name="GOOGLE3" />-->
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Second Test -->
+
+    <test name="Safari_tests" parallel="methods" thread-count="1">
+        <parameter name="browser" value="safari"/>
+        <parameter name="browser_version" value="12.1.2"/>
         <parameter name="platform" value="mac"/>
         <classes>
             <class name="Tests.FirstTest">

@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 public class TestBase {
     //Declare ThreadLocal Driver (ThreadLocalMap) for ThreadSafe Tests
-    protected static ThreadLocal<RemoteWebDriver> driver = new ThreadLocal<>();
+    public ThreadLocal<RemoteWebDriver> driver = new ThreadLocal<>();
     public CapabilityFactory capabilityFactory = new CapabilityFactory();
 
     @BeforeMethod
