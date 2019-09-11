@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="3" name="Suite" parallel="tests">
+<suite thread-count="3" name="Suite" parallel="tests"> <!--Corresponds to the number of tests in xml file-->
+
 
     <listeners>
         <listener class-name="Base.TestListener"/>
@@ -9,7 +10,7 @@
 
     <parameter name="appURL" value="https://dev-influencer.seriea.bkstg.it"/>
 
-    <test name="Chrome_tests" parallel="methods" thread-count="1">
+    <test name="Chrome_tests" parallel="methods" thread-count="1"> <!--Now can only execute 1 method in parallel-->
         <parameter name="browser" value="chrome"/>
         <parameter name="browser_version" value="76.0"/>
         <parameter name="platform" value="mac"/>
