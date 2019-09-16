@@ -21,24 +21,29 @@ public class TestBase {
 
     @BeforeMethod
     @Parameters({"browser", "appURL", "platform"})
-    public void setup (String browser, String appURL, /*String browser_version,*/ String platform) throws MalformedURLException, InterruptedException {
+    public void setup(String browser, String appURL, /*String browser_version,*/ String platform) throws MalformedURLException, InterruptedException {
         //Set Browser to ThreadLocalMap
         driver.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilityFactory.getCapabilities(browser, /*browser_version,*/ platform)));
 
         /*getDriver().manage().window().maximize();*/
-        Toolkit toolkit = Toolkit.getDefaultToolkit();
+       /* Toolkit toolkit = Toolkit.getDefaultToolkit();
         int width = (int) toolkit.getScreenSize().getWidth();
         int height = (int) toolkit.getScreenSize().getHeight();
-        getDriver().manage().window().setSize(new Dimension(width, height));
-        /*getDriver().manage().window().fullscreen();*/
-        getDriver().navigate().to(appURL);
-        getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        getDriver().manage().window().setSize(new Dimension(width, height));*/
 
-        /*JavascriptExecutor je = (JavascriptExecutor) driver;
-        je.executeScript("if(window.screen){\n" +
-                "    window.moveTo(0, 0);\n" +
-                "    window.resizeTo(window.screen.availWidth, window.screen.availHeight);\n" +
-                "    };");*/
+        Toolkit toolkit;
+        if (browser.equals("chrome")) {
+            toolkit = Toolkit.getDefaultToolkit();
+            /*int width = (int) toolkit.getScreenSize().getWidth();
+            int height = (int) toolkit.getScreenSize().getHeight();*/
+            getDriver().manage().window().setSize(new Dimension(1280, 960));
+            getDriver().navigate().to(appURL);
+            getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        } else {
+            getDriver().manage().window().maximize();
+            getDriver().navigate().to(appURL);
+            getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        }
     }
 
     public WebDriver getDriver() {

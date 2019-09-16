@@ -7,43 +7,41 @@
     1. suite thread-count="1" name="Suite" parallel="tests"
     2. on physical machine the classes thread count for tests can be 2 or more, however, setting the thread count
     to 3 make tests unstable
-    3. on VM the thread count for classes can only be 1, otherwise, tests fail
-    4. mind that edge and safari can only support 1 sessions at a time, so classes thread count should be one as well-->
+    3. on VM the thread count for classes should be 2 (3 makes tests unstable)
+    4. mind that edge and safari can only support 1 sessions at a time, so it should be "methods" and thread count should be one as well-->
 
 
     <listeners>
         <listener class-name="Base.TestListener"/>
-        <!--<listener class-name="Base.RetryListener"/>-->
+        <listener class-name="Base.RetryListener"/>
     </listeners>
 
     <parameter name="appURL" value="https://dev-influencer.seriea.bkstg.it"/>
 
     <test name="Chrome_tests" parallel="classes" thread-count="2">
         <parameter name="browser" value="chrome"/>
-        <parameter name="browser_version" value="77.0"/>
+        <!-- <parameter name="browser_version" value="77.0"/>-->
         <parameter name="platform" value="mac"/>
         <classes>
             <class name="Tests.NotifyCuspTest">
                 <methods>
                     <include name="FullNameFieldIsDisplayed" />
-                    <include name="SendButtonIsDisabledIfDescriptionIsEmpty" />
+                    <!--<include name="SendButtonIsDisabledIfDescriptionIsEmpty" />-->
                 </methods>
             </class>
-            <class name="Tests.UsersPageTest">
+            <!--<class name="Tests.UsersPageTest">
                 <methods>
                     <include name="AddUserDialogisDisplayed" />
                     <include name="AddUserButtonisDisplayed" />
                 </methods>
-            </class>
-            <class name="Tests.FirstTest">
-            </class>
+            </class>-->
 
         </classes>
     </test>
 
     <test name="Firefox_tests" parallel="classes" thread-count="2">
         <parameter name="browser" value="firefox"/>
-        <parameter name="browser_version" value="69.0"/>
+        <!--<parameter name="browser_version" value="69.0"/>-->
         <parameter name="platform" value="mac"/>
         <classes>
             <class name="Tests.NotifyCuspTest">
@@ -58,15 +56,13 @@
                     <include name="AddUserButtonisDisplayed" />
                 </methods>
             </class>
-            <class name="Tests.FirstTest">
-            </class>
 
         </classes>
     </test>
 
-    <test name="Safari_tests" parallel="classes" thread-count="1">
+    <test name="Safari_tests" parallel="methods" thread-count="1">
         <parameter name="browser" value="safari"/>
-        <parameter name="browser_version" value="12.1.2"/>
+        <!--<parameter name="browser_version" value="12.1.2"/>-->
         <parameter name="platform" value="mac"/>
         <classes>
             <class name="Tests.NotifyCuspTest">
@@ -85,9 +81,9 @@
         </classes>
     </test>
 
-    <test name="Chrome_tests_win" parallel="classes" thread-count="1"> <!--Now can only execute 1 method in parallel-->
+    <test name="Chrome_tests_win" parallel="classes" thread-count="2"> <!--Now can only execute 1 method in parallel-->
         <parameter name="browser" value="chrome"/>
-        <parameter name="browser_version" value="77.0"/>
+        <!--<parameter name="browser_version" value="77.0"/>-->
         <parameter name="platform" value="windows"/>
         <classes>
             <class name="Tests.NotifyCuspTest">
@@ -106,9 +102,9 @@
         </classes>
     </test>
 
-    <test name="Firefox_tests_win" parallel="classes" thread-count="1">
+    <test name="Firefox_tests_win" parallel="classes" thread-count="2">
         <parameter name="browser" value="firefox"/>
-        <parameter name="browser_version" value="69.0"/>
+        <!--<parameter name="browser_version" value="69.0"/>-->
         <parameter name="platform" value="windows"/>
         <classes>
             <class name="Tests.NotifyCuspTest">
@@ -127,10 +123,10 @@
         </classes>
     </test>
 
-    <!--<test name="Edge_tests" parallel="methods" thread-count="1">
+    <test name="Edge_tests" parallel="methods" thread-count="1">
         <parameter name="browser" value="MicrosoftEdge"/>
-        <parameter name="browser_version" value="44.1836"/>
-        <parameter name="platform" value="mac"/>
+        <!--<parameter name="browser_version" value="44.18362.329.0"/>-->
+        <parameter name="platform" value="windows"/>
         <classes>
             <class name="Tests.NotifyCuspTest">
                 <methods>
@@ -146,7 +142,7 @@
             </class>
 
         </classes>
-    </test>-->
+    </test>
 
 
 </suite> <!-- Suite -->

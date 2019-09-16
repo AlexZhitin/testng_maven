@@ -36,7 +36,7 @@ public class NotifyCuspTest extends TestBase {
         notifyOption.clickNotifyOption();
 
         if (dialog.NotifyCuspDialogIsDisplayed()) {
-            Assert.assertTrue(true);
+            Assert.assertTrue(false);////should be true
         } else {
             System.out.println(error);
             ExtentTestManager.getTest().log(Status.INFO, error);
