@@ -20,7 +20,7 @@
 
     <test name="Chrome_tests" parallel="classes" thread-count="2">
         <parameter name="browser" value="chrome"/>
-        <parameter name="browser_version" value="77.0"/>
+       <!-- <parameter name="browser_version" value="77.0"/>-->
         <parameter name="platform" value="mac"/>
         <classes>
             <class name="Tests.NotifyCuspTest">
@@ -35,15 +35,13 @@
                     <include name="AddUserButtonisDisplayed" />
                 </methods>
             </class>
-            <class name="Tests.FirstTest">
-            </class>
 
         </classes>
     </test>
 
-    <test name="Firefox_tests" parallel="classes" thread-count="2">
+    <!--<test name="Firefox_tests" parallel="classes" thread-count="2">
         <parameter name="browser" value="firefox"/>
-        <parameter name="browser_version" value="69.0"/>
+        &lt;!&ndash;<parameter name="browser_version" value="69.0"/>&ndash;&gt;
         <parameter name="platform" value="mac"/>
         <classes>
             <class name="Tests.NotifyCuspTest">
@@ -58,13 +56,11 @@
                     <include name="AddUserButtonisDisplayed" />
                 </methods>
             </class>
-            <class name="Tests.FirstTest">
-            </class>
 
         </classes>
-    </test>
+    </test>-->
 
-    <test name="Safari_tests" parallel="classes" thread-count="1">
+    <!--<test name="Safari_tests" parallel="classes" thread-count="1">
         <parameter name="browser" value="safari"/>
         <parameter name="browser_version" value="12.1.2"/>
         <parameter name="platform" value="mac"/>
@@ -83,11 +79,11 @@
             </class>
 
         </classes>
-    </test>
+    </test>-->
 
-    <test name="Chrome_tests_win" parallel="classes" thread-count="1"> <!--Now can only execute 1 method in parallel-->
+    <!--<test name="Chrome_tests_win" parallel="classes" thread-count="2"> &lt;!&ndash;Now can only execute 1 method in parallel&ndash;&gt;
         <parameter name="browser" value="chrome"/>
-        <parameter name="browser_version" value="77.0"/>
+        &lt;!&ndash;<parameter name="browser_version" value="77.0"/>&ndash;&gt;
         <parameter name="platform" value="windows"/>
         <classes>
             <class name="Tests.NotifyCuspTest">
@@ -104,11 +100,11 @@
             </class>
 
         </classes>
-    </test>
+    </test>-->
 
-    <test name="Firefox_tests_win" parallel="classes" thread-count="1">
+    <!--<test name="Firefox_tests_win" parallel="classes" thread-count="2">
         <parameter name="browser" value="firefox"/>
-        <parameter name="browser_version" value="69.0"/>
+        &lt;!&ndash;<parameter name="browser_version" value="69.0"/>&ndash;&gt;
         <parameter name="platform" value="windows"/>
         <classes>
             <class name="Tests.NotifyCuspTest">
@@ -125,12 +121,12 @@
             </class>
 
         </classes>
-    </test>
+    </test>-->
 
-    <!--<test name="Edge_tests" parallel="methods" thread-count="1">
+    <!--<test name="Edge_tests" parallel="classes" thread-count="1">
         <parameter name="browser" value="MicrosoftEdge"/>
-        <parameter name="browser_version" value="44.1836"/>
-        <parameter name="platform" value="mac"/>
+        &lt;!&ndash;<parameter name="browser_version" value="44.18362.329.0"/>&ndash;&gt;
+        <parameter name="platform" value="windows"/>
         <classes>
             <class name="Tests.NotifyCuspTest">
                 <methods>

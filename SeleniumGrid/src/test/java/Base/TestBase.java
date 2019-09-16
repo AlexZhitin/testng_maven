@@ -17,12 +17,13 @@ public class TestBase {
     public CapabilityFactory capabilityFactory = new CapabilityFactory();
 
     @BeforeMethod
-    @Parameters({"browser", "appURL", "browser_version", "platform"})
-    public void setup (String browser, String appURL, String browser_version, String platform) throws MalformedURLException {
+    @Parameters({"browser", "appURL", "platform"})
+    public void setup (String browser, String appURL, /*String browser_version,*/ String platform) throws MalformedURLException {
         //Set Browser to ThreadLocalMap
-        driver.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilityFactory.getCapabilities(browser, browser_version, platform)));
+        driver.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilityFactory.getCapabilities(browser, /*browser_version,*/ platform)));
         getDriver().manage().window().maximize();
         getDriver().navigate().to(appURL);
+        getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
     public WebDriver getDriver() {
