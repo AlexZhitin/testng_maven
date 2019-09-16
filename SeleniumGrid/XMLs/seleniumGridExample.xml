@@ -26,15 +26,15 @@
             <class name="Tests.NotifyCuspTest">
                 <methods>
                     <include name="FullNameFieldIsDisplayed" />
-                    <!--<include name="SendButtonIsDisabledIfDescriptionIsEmpty" />-->
+                    <include name="SendButtonIsDisabledIfDescriptionIsEmpty" />
                 </methods>
             </class>
-            <!--<class name="Tests.UsersPageTest">
+            <class name="Tests.UsersPageTest">
                 <methods>
                     <include name="AddUserDialogisDisplayed" />
                     <include name="AddUserButtonisDisplayed" />
                 </methods>
-            </class>-->
+            </class>
 
         </classes>
     </test>

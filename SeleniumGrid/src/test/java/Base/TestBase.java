@@ -38,11 +38,11 @@ public class TestBase {
             int height = (int) toolkit.getScreenSize().getHeight();*/
             getDriver().manage().window().setSize(new Dimension(1280, 960));
             getDriver().navigate().to(appURL);
-            getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+            getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         } else {
             getDriver().manage().window().maximize();
             getDriver().navigate().to(appURL);
-            getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+            getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         }
     }
 
