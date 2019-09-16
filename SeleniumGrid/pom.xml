@@ -47,17 +47,6 @@
             <artifactId>selenium-java</artifactId>
             <version>3.141.59</version>
         </dependency>
-        <!--<dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-remote-driver</artifactId>
-            <version>3.8.1</version>
-        </dependency>-->
-
-        <!--<dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-support</artifactId>
-            <version>3.8.1</version>
-        </dependency>-->
 
         <dependency>
             <groupId>com.google.api-client</groupId>
@@ -149,17 +138,6 @@
             <version>7.0.0-beta3</version>
             <scope>compile</scope>
         </dependency>
-        <!--<dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-chrome-driver</artifactId>
-            <version>3.5.1</version>
-        </dependency>-->
-        <!--<dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-api</artifactId>
-            <version>3.141.59</version>
-            <scope>test</scope>
-        </dependency>-->
         <dependency>
             <groupId>org.apache.xbean</groupId>
             <artifactId>xbean-reflect</artifactId>
@@ -192,6 +170,13 @@
             <artifactId>xbean-reflect</artifactId>
             <version>3.4</version>
             <scope>test</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpcore -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpcore</artifactId>
+            <version>4.4.11</version>
         </dependency>
 
 
