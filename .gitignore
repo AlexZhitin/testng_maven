@@ -13,3 +13,8 @@ buildNumber.properties
 /.idea/
 .idea/workspace.xml
 *.html
+.idea/
+*.iml
+
+.DS_Store
+log/
