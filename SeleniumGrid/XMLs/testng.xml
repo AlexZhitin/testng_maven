@@ -22,7 +22,7 @@
                 </methods>
             </class>
         </classes>
-    </test> <!-- Second Test -->
+    </test>
 
 
     <test name="Firefox_tests" parallel="methods" thread-count="1">
