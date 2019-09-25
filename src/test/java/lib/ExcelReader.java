@@ -23,7 +23,7 @@ public class ExcelReader {
 
   String path = null;
 
-  //Constructor here
+  //Constructor
 
   public ExcelReader() throws IOException {
 
