@@ -3,7 +3,7 @@
 <suite name="Firefox suite" parallel="classes" thread-count="2">
 
     <listeners>
-        <listener class-name="Base.Base.TestListener" />
+        <listener class-name="Base.TestListener" />
     </listeners>
 
     <parameter name="browserType" value="firefox"/>
