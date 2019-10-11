@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" name="Suite" parallel="tests"> <!--Corresponds to the number of tests in xml file-->
+
+    <listeners>
+        <listener class-name="Base.TestListener"/>
+        <listener class-name="Base.RetryListener"/>
+    </listeners>
+
+    <parameter name="appURL" value="https://dev-influencer.seriea.bkstg.it"/>
+
+    <test name="Chrome_tests" parallel="classes" thread-count="2">
+        <parameter name="browserType" value="chrome"/>
+        <parameter name="platform" value="mac"/>
+        <parameter name="connection" value="testng"/>
+        <classes>
+            <class name="Tests.NotifyCuspTest">
+                <methods>
+                    <include name="FullNameFieldIsDisplayed" />
+                    <!--<include name="SendButtonIsDisabledIfDescriptionIsEmpty" />-->
+                </methods>
+            </class>
+            <!--<class name="Tests.UsersPageTest">
+                <methods>
+                    <include name="AddUserDialogisDisplayed" />
+                    <include name="AddUserButtonisDisplayed" />
+                </methods>
+            </class>-->
+
+        </classes>
+    </test>
+
+    <!--<test name="Firefox_tests" parallel="classes" thread-count="2">
+        <parameter name="browser" value="firefox"/>
+        &lt;!&ndash;<parameter name="browser_version" value="69.0"/>&ndash;&gt;
+        <parameter name="platform" value="mac"/>
+        <classes>
+            <class name="Tests.NotifyCuspTest">
+                <methods>
+                    <include name="FullNameFieldIsDisplayed" />
+                    <include name="SendButtonIsDisabledIfDescriptionIsEmpty" />
+                </methods>
+            </class>
+            <class name="Tests.UsersPageTest">
+                <methods>
+                    <include name="AddUserDialogisDisplayed" />
+                    <include name="AddUserButtonisDisplayed" />
+                </methods>
+            </class>
+
+        </classes>
+    </test>
+
+    <test name="Safari_tests" parallel="methods" thread-count="1">
+        <parameter name="browser" value="safari"/>
+        &lt;!&ndash;<parameter name="browser_version" value="12.1.2"/>&ndash;&gt;
+        <parameter name="platform" value="mac"/>
+        <classes>
+            <class name="Tests.NotifyCuspTest">
+                <methods>
+                    <include name="FullNameFieldIsDisplayed" />
+                    <include name="SendButtonIsDisabledIfDescriptionIsEmpty" />
+                </methods>
+            </class>
+            <class name="Tests.UsersPageTest">
+                <methods>
+                    <include name="AddUserDialogisDisplayed" />
+                    <include name="AddUserButtonisDisplayed" />
+                </methods>
+            </class>
+
+        </classes>
+    </test>
+
+    <test name="Chrome_tests_win" parallel="classes" thread-count="2"> &lt;!&ndash;Now can only execute 1 method in parallel&ndash;&gt;
+        <parameter name="browser" value="chrome"/>
+        &lt;!&ndash;<parameter name="browser_version" value="77.0"/>&ndash;&gt;
+        <parameter name="platform" value="windows"/>
+        <classes>
+            <class name="Tests.NotifyCuspTest">
+                <methods>
+                    <include name="FullNameFieldIsDisplayed" />
+                    <include name="SendButtonIsDisabledIfDescriptionIsEmpty" />
+                </methods>
+            </class>
+            <class name="Tests.UsersPageTest">
+                <methods>
+                    <include name="AddUserDialogisDisplayed" />
+                    <include name="AddUserButtonisDisplayed" />
+                </methods>
+            </class>
+
+        </classes>
+    </test>
+
+    <test name="Firefox_tests_win" parallel="classes" thread-count="2">
+        <parameter name="browser" value="firefox"/>
+        &lt;!&ndash;<parameter name="browser_version" value="69.0"/>&ndash;&gt;
+        <parameter name="platform" value="windows"/>
+        <classes>
+            <class name="Tests.NotifyCuspTest">
+                <methods>
+                    <include name="FullNameFieldIsDisplayed" />
+                    <include name="SendButtonIsDisabledIfDescriptionIsEmpty" />
+                </methods>
+            </class>
+            <class name="Tests.UsersPageTest">
+                <methods>
+                    <include name="AddUserDialogisDisplayed" />
+                    <include name="AddUserButtonisDisplayed" />
+                </methods>
+            </class>
+
+        </classes>
+    </test>
+
+    <test name="Edge_tests" parallel="methods" thread-count="1">
+        <parameter name="browser" value="MicrosoftEdge"/>
+        &lt;!&ndash;<parameter name="browser_version" value="44.18362.329.0"/>&ndash;&gt;
+        <parameter name="platform" value="windows"/>
+        <classes>
+            <class name="Tests.NotifyCuspTest">
+                <methods>
+                    <include name="FullNameFieldIsDisplayed" />
+                    <include name="SendButtonIsDisabledIfDescriptionIsEmpty" />
+                </methods>
+            </class>
+            <class name="Tests.UsersPageTest">
+                <methods>
+                    <include name="AddUserDialogisDisplayed" />
+                    <include name="AddUserButtonisDisplayed" />
+                </methods>
+            </class>
+
+        </classes>
+    </test>-->
+
+
+</suite>
