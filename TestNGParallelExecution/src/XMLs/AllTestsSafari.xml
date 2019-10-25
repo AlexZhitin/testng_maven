@@ -24,7 +24,7 @@
             <class name="Tests.TopBar.HashtagSearchTest"/>
             <class name="Tests.TopBar.TopBarTest"/>
 
-            <class name="Tests.AddUserTest"/>
+            <class name="Tests.SomeTest"/>
             <!--<class name="Tests.AggregatedPageTest"/>-->
             <class name="Tests.ClipDetailsTest"/>
             <class name="Tests.FiltersTest"/>
