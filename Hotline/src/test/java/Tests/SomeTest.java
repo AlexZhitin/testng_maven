@@ -22,7 +22,10 @@ public class SomeTest extends TestBase {
   private String filterDisplay = "6,01-6,39[586796]";
   private String filterRam = "6[384897]";
   private String filterMemory = "128[116870]";
+  private String filterYear = "2018[573866]";
   private String model = "Xiaomi Mi 9T Pro 6/128GB Black";
+  private String priceFrom = "5000";
+  private String priceTill = "12000";
 
 
 
@@ -39,6 +42,7 @@ public class SomeTest extends TestBase {
     HomePage home_page = new HomePage(driver);
     MobilePage mobile_page = new MobilePage(driver);
     mobilnye_telefony_i_smartfony mobile_smartphone_page = new mobilnye_telefony_i_smartfony(driver);
+    mobilnye_telefony_i_smartfony button = new mobilnye_telefony_i_smartfony(driver);
 
     String error = "Unexpected phone model";
     String test = "Testcase";
@@ -46,12 +50,21 @@ public class SomeTest extends TestBase {
     home_page.clickSection(sectionMobile);
     mobile_page.clickCategory(categorySmarthonesMobile);
     mobile_page.clickSubcategory(subcategorySmarthonesMobile);
-    mobile_smartphone_page.selectFilter(filterPop);
+    mobile_smartphone_page.slider();
+    /*mobile_smartphone_page.selectFilter(filterPop);
     mobile_smartphone_page.selectFilter(filterType);
     mobile_smartphone_page.selectFilter(filterBrand);
     mobile_smartphone_page.selectFilter(filterDisplay);
     mobile_smartphone_page.selectFilter(filterRam);
     mobile_smartphone_page.selectFilter(filterMemory);
+    mobile_smartphone_page.selectFilter(filterYear);*//*
+    */
+    mobile_smartphone_page.inputPriceFrom(priceFrom);
+    Thread.sleep(3000);
+    mobile_smartphone_page.inputPriceTill(priceTill);
+    Thread.sleep(3000);
+
+
     mobile_smartphone_page.clickSwitcherCapacity();
     Thread.sleep(10000);
 
