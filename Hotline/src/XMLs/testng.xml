@@ -14,8 +14,7 @@
         <classes>
             <class name="Tests.SomeTest">
                 <methods>
-                    <include name="FullNameFieldIsDisplayed"/>
-
+                    <include name="sectionMobile"/>
                 </methods>
             </class>
         </classes>
