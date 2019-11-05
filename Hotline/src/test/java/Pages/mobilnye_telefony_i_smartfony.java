@@ -3,6 +3,7 @@ package Pages;
 import Base.ExtentTestManager;
 import com.aventstack.extentreports.Status;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -18,10 +19,10 @@ public class mobilnye_telefony_i_smartfony {
     /*private By switcherCapacity = By.xpath("//i[@class='switch-thumb'][@xpath='3']");*/
     private By switcherCapacity = By.xpath("//label[@for='switch-gr-39854']/i[2]");
     private By itemFirst = By.xpath("((//div[@class='item-info'])[1]//a)[1]");
-    private By priceFrom = By.xpath("//div[@class='filters-item opened filters-price']//input[1]");
-    private By priceTill = By.xpath("//div[@class='filters-item opened filters-price']//input[3]");
     private By buttonOk = By.xpath("//input[@class='btn-graphite']");
     private By sliderLeft = By.xpath("//div[@class='filters-item opened filters-price']//div[@class='item-bd']//span[1]");
+    private By sliderRight = By.xpath("//div[@class='item-bd']//span[2]");
+    private By sliderLine = By.xpath("//div[@class='ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content']");
 
     //input[@class='btn-graphite']
 
@@ -75,43 +76,35 @@ public class mobilnye_telefony_i_smartfony {
         }
     }
 
-    public void inputPriceFrom(String price) {
+        public void sliderPriceLeft() {
 
-        try {
-            WebDriverWait wait = new WebDriverWait(driver, 5);
-            JavascriptExecutor js = (JavascriptExecutor) driver;
-            String script = "document.querySelector(\"#page-catalog > div.wrapper > div.content.row > div.row-fixed > aside > div > div.filters-bd.tabs-content > div.filters-all.active > div.filters-item.opened.filters-price > div.item-bd > div > div.nowrap.m_b-lg > input:nth-child(1)\").setAttribute('value', '6000'); document.querySelector(\"#page-catalog > div.wrapper > div.content.row > div.row-fixed > aside > div > div.filters-bd.tabs-content > div.filters-all.active > div.filters-item.opened.filters-price > div.item-bd > div > div.nowrap.m_b-lg > input:nth-child(2)\").setAttribute('value', '6000')";
-            String scriptOk = "document.getElementsByClassName('btn-graphite')[2].click();";
-            WebElement button = driver.findElement(buttonOk);
-            wait.until(ExpectedConditions.visibilityOfElementLocated(priceFrom));
-            WebElement input = driver.findElement(priceFrom);
-            input.click();
-            js.executeScript(script);
-            Thread.sleep(3000);
-            js.executeScript(scriptOk);
-            /*for (int i = 0; i < 10; i++) {
-                input.sendKeys(Keys.BACK_SPACE);
-            }*/
-            Thread.sleep(5000);
-
-        } catch (Throwable e) {
-            ExtentTestManager.getTest().log(Status.INFO, e);
-            System.out.println(e);
-        }
-    }
-
-    public void inputPriceTill(String price) {
-
-        try {
-            WebDriverWait wait = new WebDriverWait(driver, 5);
-            wait.until(ExpectedConditions.visibilityOfElementLocated(priceTill));
-            WebElement input = driver.findElement(priceTill);
-            WebElement button = driver.findElement(buttonOk);
-            input.click();
-            for (int i = 0; i < 10; i++) {
-                input.sendKeys(Keys.BACK_SPACE);
+            try {
+                WebDriverWait wait = new WebDriverWait(driver, 5);
+                wait.until(ExpectedConditions.visibilityOfElementLocated(sliderLeft));
+                WebElement slider = driver.findElement(sliderLeft);
+                WebElement sliderL = driver.findElement(sliderLine);
+                int width=sliderL.getSize().getWidth();
+                Actions move = new Actions(driver);
+                Action action  = move.dragAndDropBy(slider, (int) ((width*4.87)/100), 0).build();
+                action.perform();
+            } catch (Throwable e) {
+                ExtentTestManager.getTest().log(Status.INFO, e);
+                System.out.println(e);
             }
-            input.sendKeys(price);
+        }
+
+    public void sliderPriceRight() {
+
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, 5);
+            WebElement button = driver.findElement(buttonOk);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(sliderRight));
+            WebElement slider = driver.findElement(sliderRight);
+            WebElement sliderL = driver.findElement(sliderLine);
+            int width=sliderL.getSize().getWidth();
+            Actions move = new Actions(driver);
+            Action action  = move.dragAndDropBy(slider, ((width*-92)/100), 0).build();
+            action.perform();
             button.click();
         } catch (Throwable e) {
             ExtentTestManager.getTest().log(Status.INFO, e);
