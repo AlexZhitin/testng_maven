@@ -7,6 +7,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.util.List;
 
 public class mobilnye_telefony_i_smartfony {
@@ -77,15 +79,20 @@ public class mobilnye_telefony_i_smartfony {
 
         try {
             WebDriverWait wait = new WebDriverWait(driver, 5);
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            String script = "document.querySelector(\"#page-catalog > div.wrapper > div.content.row > div.row-fixed > aside > div > div.filters-bd.tabs-content > div.filters-all.active > div.filters-item.opened.filters-price > div.item-bd > div > div.nowrap.m_b-lg > input:nth-child(1)\").setAttribute('value', '6000'); document.querySelector(\"#page-catalog > div.wrapper > div.content.row > div.row-fixed > aside > div > div.filters-bd.tabs-content > div.filters-all.active > div.filters-item.opened.filters-price > div.item-bd > div > div.nowrap.m_b-lg > input:nth-child(2)\").setAttribute('value', '6000')";
+            String scriptOk = "document.getElementsByClassName('btn-graphite')[2].click();";
+            WebElement button = driver.findElement(buttonOk);
             wait.until(ExpectedConditions.visibilityOfElementLocated(priceFrom));
             WebElement input = driver.findElement(priceFrom);
-            WebElement button = driver.findElement(buttonOk);
             input.click();
-            for (int i = 0; i < 10; i++) {
+            js.executeScript(script);
+            Thread.sleep(3000);
+            js.executeScript(scriptOk);
+            /*for (int i = 0; i < 10; i++) {
                 input.sendKeys(Keys.BACK_SPACE);
-            }
-            input.sendKeys(price);
-            input.sendKeys(Keys.RETURN);
+            }*/
+            Thread.sleep(5000);
 
         } catch (Throwable e) {
             ExtentTestManager.getTest().log(Status.INFO, e);
@@ -101,45 +108,11 @@ public class mobilnye_telefony_i_smartfony {
             WebElement input = driver.findElement(priceTill);
             WebElement button = driver.findElement(buttonOk);
             input.click();
-            Thread.sleep(3000);
             for (int i = 0; i < 10; i++) {
                 input.sendKeys(Keys.BACK_SPACE);
             }
-            Thread.sleep(3000);
             input.sendKeys(price);
-            Thread.sleep(3000);
             button.click();
-            Thread.sleep(3000);
-        } catch (Throwable e) {
-            ExtentTestManager.getTest().log(Status.INFO, e);
-            System.out.println(e);
-        }
-    }
-
-    public void clickButtonOk() {
-
-        try {
-            WebDriverWait wait = new WebDriverWait(driver, 5);
-            wait.until(ExpectedConditions.visibilityOfElementLocated(buttonOk));
-            WebElement button = driver.findElement(buttonOk);
-            button.click();
-        } catch (Throwable e) {
-            ExtentTestManager.getTest().log(Status.INFO, e);
-            System.out.println(e);
-        }
-    }
-
-    public void slider() {
-
-        try {
-            WebDriverWait wait = new WebDriverWait(driver, 5);
-            wait.until(ExpectedConditions.visibilityOfElementLocated(buttonOk));
-            WebElement slider = driver.findElement(sliderLeft);
-
-            Actions action= new Actions(driver);
-            action.clickAndHold(slider);
-            action.moveByOffset(40,0);
-            action.release().build();
         } catch (Throwable e) {
             ExtentTestManager.getTest().log(Status.INFO, e);
             System.out.println(e);

@@ -8,6 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.util.List;
 
 public class MobilePage {
@@ -17,8 +19,12 @@ public class MobilePage {
     private By categories = By.xpath("//span[@class='title']");
     private By subcategories = By.xpath("//a[@class='link-blue']");
 
+    Robot r =new Robot();
 
-    public MobilePage(WebDriver driver) {
+
+
+
+    public MobilePage(WebDriver driver) throws AWTException {
 
         this.driver = driver;
     }

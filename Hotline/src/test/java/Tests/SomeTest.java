@@ -11,6 +11,8 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.awt.*;
+
 public class SomeTest extends TestBase {
   private WebDriver driver;
   private String sectionMobile = "mobile";
@@ -37,7 +39,7 @@ public class SomeTest extends TestBase {
 
   @Test
 
-  public void sectionMobile() throws InterruptedException {
+  public void sectionMobile() throws InterruptedException, AWTException {
 
     HomePage home_page = new HomePage(driver);
     MobilePage mobile_page = new MobilePage(driver);
