@@ -33,7 +33,7 @@ public class HomePage {
                 } else {
                 }
         } catch (Throwable e) {
-            ExtentTestManager.getTest().log(Status.INFO, e);
+            /*ExtentTestManager.getTest().log(Status.INFO, e);*/
             System.out.println(e);
         }
     }

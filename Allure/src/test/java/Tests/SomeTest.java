@@ -3,28 +3,15 @@ package Tests;
 import Base.TestBase;
 import Pages.HomePage;
 import Pages.MobilePage;
-import Pages.mobilnye_telefony_i_smartfony;
-import com.aventstack.extentreports.Status;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.awt.*;
-
 public class SomeTest extends TestBase {
   private WebDriver driver;
   private String sectionMobile = "mobile";
-  private String categorySmarthonesMobile = "Смартфоны и мобильные телефоны";
-  private String subcategorySmarthonesMobile = "Смартфоны и мобильные телефоны";
-  private String filterPop = "Игровой телефон[609557]";
-  private String filterType = "Смартфон[133]";
-  private String filterBrand = "Xiaomi[294391]";
-  private String filterDisplay = "6,01-6,39[586796]";
-  private String filterRam = "6[384897]";
-  private String filterMemory = "128[116870]";
-  private String filterYear = "2018[573866]";
-  private String model = "Xiaomi Mi 8 6/64GB Black";
+  private String mobileSectionPageTitle = "Смартфоны, Телефоны";
 
 
 
@@ -36,28 +23,20 @@ public class SomeTest extends TestBase {
 
   @Test
 
-  public void sectionMobile() throws InterruptedException, AWTException {
+  public void check_mobile_section_title() {
 
     HomePage home_page = new HomePage(driver);
     MobilePage mobile_page = new MobilePage(driver);
-    mobilnye_telefony_i_smartfony mobile_smartphone_page = new mobilnye_telefony_i_smartfony(driver);
-    mobilnye_telefony_i_smartfony button = new mobilnye_telefony_i_smartfony(driver);
 
-    String error = "Unexpected phone model";
-    String test = "Testcase";
+    String error = "Wrong page title or it's not showing";
 
     home_page.clickSection(sectionMobile);
-    mobile_page.clickCategory(categorySmarthonesMobile);
 
-
-    
-    if (mobile_smartphone_page.checkPhone(model)) {
+    if (mobile_page.getPageTitleText().equals(mobileSectionPageTitle)) {
       Assert.assertTrue(true);
     } else {
       System.out.println(error);
-      ExtentTestManager.getTest().log(Status.INFO, error);
       Assert.fail();
     }
-    ExtentTestManager.getTest().log(Status.INFO, test);
   }
 }
