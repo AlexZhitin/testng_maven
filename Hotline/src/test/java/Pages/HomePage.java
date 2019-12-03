@@ -26,20 +26,6 @@ public class HomePage {
         this.driver = driver;
     }
 
-    /*public boolean FullNameFieldIsDisplayed() {
-
-        try {
-            WebDriverWait wait = new WebDriverWait(driver, 5);
-            wait.until(ExpectedConditions.visibilityOfElementLocated(fieldFullName));
-            WebElement field = driver.findElement(fieldFullName);
-            return field.isDisplayed();
-        } catch (Throwable e) {
-            ExtentTestManager.getTest().log(Status.INFO, e);
-            System.out.println(e);
-            return false;
-        }
-    }*/
-
 
     public void clickSection(String section) {
         try {

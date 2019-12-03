@@ -19,12 +19,8 @@ public class MobilePage {
     private By categories = By.xpath("//span[@class='title']");
     private By subcategories = By.xpath("//a[@class='link-blue']");
 
-    Robot r =new Robot();
 
-
-
-
-    public MobilePage(WebDriver driver) throws AWTException {
+    public MobilePage(WebDriver driver) {
 
         this.driver = driver;
     }
