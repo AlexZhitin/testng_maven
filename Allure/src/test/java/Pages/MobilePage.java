@@ -1,6 +1,7 @@
 package Pages;
 
 import com.aventstack.extentreports.Status;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,7 +16,7 @@ public class MobilePage {
 
    /* private By categories = By.xpath("//span[@class='title']");
     private By subcategories = By.xpath("//a[@class='link-blue']");*/
-    private By pageTitle = By.xpath("//div[@class='cell-12']/h1");
+    private By pageTitle = By.xpath("//h1");
 
 
     public MobilePage(WebDriver driver) {
@@ -23,6 +24,7 @@ public class MobilePage {
         this.driver = driver;
     }
 
+    @Step("Getting page title")
     public String getPageTitleText() {
         try {
             WebDriverWait wait = new WebDriverWait(driver, 5);

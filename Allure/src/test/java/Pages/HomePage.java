@@ -1,6 +1,7 @@
 package Pages;
 
 import com.aventstack.extentreports.Status;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,7 +22,7 @@ public class HomePage {
         this.driver = driver;
     }
 
-
+    @Step("Select the section \"{0}\" to open")
     public void clickSection(String section) {
         try {
             WebDriverWait wait = new WebDriverWait(driver, 10);

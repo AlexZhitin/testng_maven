@@ -13,6 +13,8 @@ buildNumber.properties
 /.idea/
 *.html
 *.iml
+*.json
 
 .DS_Store
 log/
+
