@@ -28,7 +28,7 @@ public class SomeTest extends TestBase {
     driver = getDriver();
   }
 
-  @Test (description = "Verify page title")
+  @Test (description = "Testcase: verify mobile page title")
   @Severity(SeverityLevel.NORMAL)
   @Description("Testcase: verify mobile page title")
   @Story("Story: to check mobile page title")
@@ -50,7 +50,7 @@ public class SomeTest extends TestBase {
     }
   }
 
-  @Test (description = "Verify page title")
+  @Test (description = "Testcase: verify gifts page title")
   @Severity(SeverityLevel.NORMAL)
   @Description("Testcase: verify gifts page title")
   @Story("Story: to check gifts page title")
@@ -65,7 +65,7 @@ public class SomeTest extends TestBase {
     home_page.clickSection(sectionGifts);
 
     if (mobile_page.getPageTitleText().equals(giftsSectionPageTitle)) {
-      Assert.assertTrue(true);
+      Assert.assertTrue(false);
     } else {
       System.out.println(error);
       Assert.fail();
