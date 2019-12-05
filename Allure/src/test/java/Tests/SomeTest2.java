@@ -10,10 +10,9 @@ import io.qameta.allure.Story;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class SomeTest extends TestBase {
+public class SomeTest2 extends TestBase {
   private WebDriver driver;
   private String sectionMobile = "mobile";
   private String sectionGifts = "gifts";
@@ -65,7 +64,7 @@ public class SomeTest extends TestBase {
     home_page.clickSection(sectionGifts);
 
     if (mobile_page.getPageTitleText().equals(giftsSectionPageTitle)) {
-      Assert.assertTrue(false); //should be true
+      Assert.assertTrue(false);
     } else {
       System.out.println(error);
       Assert.fail();

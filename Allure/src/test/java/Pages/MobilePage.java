@@ -1,7 +1,10 @@
 package Pages;
 
+import Base.AllureTestListener;
 import com.aventstack.extentreports.Status;
+import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
+import org.apache.commons.lang.exception.ExceptionUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -33,7 +36,7 @@ public class MobilePage {
             System.out.println(title.getText());
             return title.getText();
         } catch (Throwable e) {
-            /*ExtentTestManager.getTest().log(Status.INFO, e);*/
+            AllureTestListener.saveTextLog(e.toString());
             System.out.println(e);
             return null;
         }

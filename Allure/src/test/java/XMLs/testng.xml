@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite" parallel="tests" thread-count="3">
+<suite name="Suite" parallel="tests" thread-count="1">
+
+    <!--Allure is not attaching screenshots if thread-count for tests has a number not equal to the amount of tests-->
 
     <listeners>
         <listener class-name="Base.AllureTestListener"/>
@@ -9,7 +11,7 @@
 
     <parameter name="appURL" value="https://hotline.ua"/>
 
-    <test verbose="2" name="Chrome_tests" parallel="classes" thread-count="3">
+    <test verbose="2" name="Chrome_tests" parallel="classes" thread-count="2">
         <parameter name="browserType" value="chrome"/>
         <classes>
             <class name="Tests.SomeTest">
@@ -18,6 +20,31 @@
                     <include name="check_gifts_section_title"/>
                 </methods>
             </class>
+            <!--<class name="Tests.SomeTest2">
+                <methods>
+                    <include name="check_mobile_section_title"/>
+                    <include name="check_gifts_section_title"/>
+                </methods>
+            </class>-->
         </classes>
     </test>
+
+
+    <!--<test verbose="2" name="Firefox_tests" parallel="classes" thread-count="2">
+        <parameter name="browserType" value="firefox"/>
+        <classes>
+            <class name="Tests.SomeTest">
+                <methods>
+                    <include name="check_mobile_section_title"/>
+                    <include name="check_gifts_section_title"/>
+                </methods>
+            </class>
+            <class name="Tests.SomeTest2">
+                <methods>
+                    <include name="check_mobile_section_title"/>
+                    <include name="check_gifts_section_title"/>
+                </methods>
+            </class>
+        </classes>
+    </test>-->
 </suite>
