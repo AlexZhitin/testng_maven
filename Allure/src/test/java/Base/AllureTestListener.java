@@ -102,11 +102,8 @@ public class AllureTestListener implements ITestListener {
         Object testClass = result.getInstance();
         WebDriver webDriver = ((TestBase) testClass).getDriver();
 
-        if (webDriver != null) {
-            System.out.println("Screenshot captured for test case:" + (result.getMethod().getMethodName()));
-            saveScreenshotPNG(webDriver);
-        }
-        // Save a log on allure.
+        System.out.println("Screenshot captured for test case:" + (result.getMethod().getMethodName()));
+        saveScreenshotPNG(webDriver);
         saveTextLog(result.getMethod().getMethodName() + " failed and screenshot taken!");
     }
 

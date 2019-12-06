@@ -1,10 +1,13 @@
 package Pages;
 
+import Base.AllureTestListener;
 import com.aventstack.extentreports.Status;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -12,29 +15,30 @@ import java.util.List;
 
 public class HomePage {
 
-    protected WebDriver driver;
+    @FindBy (xpath = "//li[@data-level='1']")
+    List<WebElement> sections;
 
-    private By sections = By.xpath("//li[@data-level='1']");
+    protected WebDriver driver;
 
 
     public HomePage(WebDriver driver) {
 
         this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
     @Step("Select the section \"{0}\" to open")
     public void clickSection(String section) {
         try {
             WebDriverWait wait = new WebDriverWait(driver, 10);
-            wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(sections));
-            List<WebElement> list = driver.findElements(sections);
-            for (WebElement i : list)
+            wait.until(ExpectedConditions.visibilityOfAllElements(sections));
+            for (WebElement i : sections)
                 if (i.getAttribute("class").contains(section)) {
                     i.click();
                 } else {
                 }
         } catch (Throwable e) {
-            /*ExtentTestManager.getTest().log(Status.INFO, e);*/
+            AllureTestListener.saveTextLog(e.toString());
             System.out.println(e);
         }
     }

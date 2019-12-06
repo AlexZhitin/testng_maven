@@ -1,5 +1,6 @@
 package Tests;
 
+import Base.AllureTestListener;
 import Base.TestBase;
 import Pages.HomePage;
 import Pages.MobilePage;
@@ -46,6 +47,7 @@ public class SomeTest extends TestBase {
       Assert.assertTrue(true);
     } else {
       System.out.println(error);
+      AllureTestListener.saveTextLog(error);
       Assert.fail();
     }
   }
@@ -65,9 +67,10 @@ public class SomeTest extends TestBase {
     home_page.clickSection(sectionGifts);
 
     if (mobile_page.getPageTitleText().equals(giftsSectionPageTitle)) {
-      Assert.assertTrue(false); //should be true
+      Assert.assertTrue(true);
     } else {
       System.out.println(error);
+      AllureTestListener.saveTextLog(error);
       Assert.fail();
     }
   }
