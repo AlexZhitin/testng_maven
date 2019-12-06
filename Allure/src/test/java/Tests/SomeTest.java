@@ -29,6 +29,9 @@ public class SomeTest extends TestBase {
     driver = getDriver();
   }
 
+  HomePage home_page;
+  MobilePage mobile_page;
+
   @Test (description = "Testcase: verify mobile page title")
   @Severity(SeverityLevel.NORMAL)
   @Description("Testcase: verify mobile page title")
@@ -36,8 +39,8 @@ public class SomeTest extends TestBase {
 
   public void check_mobile_section_title() {
 
-    HomePage home_page = new HomePage(driver);
-    MobilePage mobile_page = new MobilePage(driver);
+    home_page = new HomePage(driver);
+    mobile_page = new MobilePage(driver);
 
     String error = "Wrong page title or it's not showing";
 
@@ -59,8 +62,8 @@ public class SomeTest extends TestBase {
 
   public void check_gifts_section_title() {
 
-    HomePage home_page = new HomePage(driver);
-    MobilePage mobile_page = new MobilePage(driver);
+    home_page = new HomePage(driver);
+    mobile_page = new MobilePage(driver);
 
     String error = "Wrong page title or it's not showing";
 
