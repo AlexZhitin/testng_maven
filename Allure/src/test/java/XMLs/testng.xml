@@ -17,7 +17,7 @@
             <class name="Tests.SomeTest">
                 <methods>
                     <include name="check_mobile_section_title"/>
-                    <include name="check_gifts_section_title"/>
+                    <!--<include name="check_gifts_section_title"/>-->
                 </methods>
             </class>
             <!--<class name="Tests.SomeTest2">
@@ -28,7 +28,6 @@
             </class>-->
         </classes>
     </test>
-
 
     <!--<test verbose="2" name="Firefox_tests" parallel="classes" thread-count="2">
         <parameter name="browserType" value="firefox"/>

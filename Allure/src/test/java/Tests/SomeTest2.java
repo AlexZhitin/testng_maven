@@ -8,12 +8,16 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class SomeTest2 extends TestBase {
   private WebDriver driver;
+  HomePage home_page;
+  MobilePage mobile_page;
+
   private String sectionMobile = "mobile";
   private String sectionGifts = "gifts";
   private String mobileSectionPageTitle = "Смартфоны, Телефоны";
@@ -25,6 +29,8 @@ public class SomeTest2 extends TestBase {
   @BeforeMethod
   public void setUp() {
     driver = getDriver();
+    home_page = PageFactory.initElements(driver, HomePage.class);
+    mobile_page = PageFactory.initElements(driver, MobilePage.class);
   }
 
   @Test (description = "Testcase: verify mobile page title")
@@ -33,9 +39,6 @@ public class SomeTest2 extends TestBase {
   @Story("Story: to check mobile page title")
 
   public void check_mobile_section_title() {
-
-    HomePage home_page = new HomePage(driver);
-    MobilePage mobile_page = new MobilePage(driver);
 
     String error = "Wrong page title or it's not showing";
 
@@ -55,9 +58,6 @@ public class SomeTest2 extends TestBase {
   @Story("Story: to check gifts page title")
 
   public void check_gifts_section_title() {
-
-    HomePage home_page = new HomePage(driver);
-    MobilePage mobile_page = new MobilePage(driver);
 
     String error = "Wrong page title or it's not showing";
 

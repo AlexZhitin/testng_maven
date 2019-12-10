@@ -1,1 +1,0 @@
-check_mobile_section_title failed and screenshot taken!
