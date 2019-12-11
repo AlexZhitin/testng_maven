@@ -14,8 +14,6 @@ buildNumber.properties
 *.html
 *.iml
 *.json
-Allure/allure-results
-Allure/allure-report
 .DS_Store
 log/
 

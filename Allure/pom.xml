@@ -45,7 +45,7 @@
                 <configuration>
                     <filesets>
                         <fileset>
-                            <directory>${basedir}/allure-results</directory> <!-- Same as /Users/Sasha/Documents/Selenium_projects/testng_maven/Allure-->
+                            <directory>${basedir}/allure-results</directory> <!-- Same as /Users/Sasha/Documents/Selenium_projects/testng_maven/Allure Is used to clean allure-results before each test run-->
                         </fileset>
                     </filesets>
                 </configuration>
