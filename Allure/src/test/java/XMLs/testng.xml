@@ -20,16 +20,16 @@
                     <include name="check_gifts_section_title"/>
                 </methods>
             </class>
-            <class name="Tests.SomeTest2">
+            <!--<class name="Tests.SomeTest2">
                 <methods>
                     <include name="check_mobile_section_title"/>
                     <include name="check_gifts_section_title"/>
                 </methods>
-            </class>
+            </class>-->
         </classes>
     </test>
 
-    <test verbose="2" name="Firefox_tests" parallel="classes" thread-count="2">
+    <!--<test verbose="2" name="Firefox_tests" parallel="classes" thread-count="2">
         <parameter name="browserType" value="firefox"/>
         <classes>
             <class name="Tests.SomeTest">
@@ -45,5 +45,5 @@
                 </methods>
             </class>
         </classes>
-    </test>
+    </test>-->
 </suite>
