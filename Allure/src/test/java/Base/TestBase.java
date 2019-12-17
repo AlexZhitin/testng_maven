@@ -2,7 +2,10 @@ package Base;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.annotations.*;
 
@@ -45,7 +48,11 @@ public class TestBase {
     } else if (osname.startsWith("Windows")) {
       System.setProperty("webdriver.chrome.driver", driverPath + "chromedriver.exe");
     }
-    WebDriver driver = new ChromeDriver();
+    ChromeOptions options = new ChromeOptions();
+    options.addArguments("--disable-extensions"); // to disable extension
+    options.addArguments("--disable-notifications"); // to disable notification
+    options.addArguments("--disable-application-cache"); // to disable cache
+    WebDriver driver = new ChromeDriver(options);
     setWebDriver(driver);
     driver.manage().window().maximize();
     driver.navigate().to(appURL);
@@ -61,7 +68,10 @@ public class TestBase {
     } else if (osname.startsWith("Windows")) {
       System.setProperty("webdriver.gecko.driver", driverPath + "geckodriver.exe");
     }
-    WebDriver driver = new FirefoxDriver();
+    FirefoxOptions options = new FirefoxOptions();
+    options.setProfile(new FirefoxProfile());
+    options.addPreference("dom.webnotifications.enabled", false);
+    WebDriver driver = new FirefoxDriver(options);
     setWebDriver(driver);
     driver.manage().window().maximize();
     driver.navigate().to(appURL);
