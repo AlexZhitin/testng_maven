@@ -1,6 +1,7 @@
 package Tests;
 
 import Base.AllureTestListener;
+import Base.ExcelToDataProvider;
 import Base.TestBase;
 import Pages.HomePage;
 import Pages.MobilePage;
@@ -77,5 +78,21 @@ public class SomeTest extends TestBase {
       AllureTestListener.saveTextLog(error);
       Assert.fail();
     }
+  }
+
+  @Test (description = "", dataProviderClass = ExcelToDataProvider.class, dataProvider = "userData")
+  @Severity(SeverityLevel.NORMAL)
+  @Description("")
+  @Story("Story: ")
+
+  public void read_from_excel(String userName, String passWord, String dateCreated, String noOfAttempts, String result) {
+
+    System.out.println("UserName: "+ userName);
+    System.out.println("PassWord: "+ passWord);
+    System.out.println("DateCreated: "+ dateCreated);
+    System.out.println("NoOfAttempts: "+ noOfAttempts);
+    System.out.println("Result: "+ result);
+    System.out.println("*********************");
+
   }
 }
