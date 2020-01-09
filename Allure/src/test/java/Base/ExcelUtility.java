@@ -20,7 +20,7 @@ import java.util.Iterator;
 import static org.apache.poi.ss.usermodel.CellType.*;
 
 
-public class ReadExcelUtility {
+public class ExcelUtility {
 
     public FileInputStream fis;
     public XSSFWorkbook workbook;
@@ -28,7 +28,7 @@ public class ReadExcelUtility {
     public XSSFRow row = null;
     public XSSFCell cell = null;
 
-    public ReadExcelUtility(String xlFilePath) throws Exception {
+    public ExcelUtility(String xlFilePath) throws Exception {
         fis = new FileInputStream(xlFilePath);
         workbook = new XSSFWorkbook(fis);
         fis.close();

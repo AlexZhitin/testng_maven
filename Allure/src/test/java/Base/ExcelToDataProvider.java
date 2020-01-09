@@ -6,7 +6,7 @@ public class ExcelToDataProvider {
 
     String xlFilePath = "/Users/Sasha/Documents/Selenium_projects/testng_maven/Allure/src/test/java/Data/testdata.xlsx";
     String sheetName = "Credentials";
-    ReadExcelUtility eat = null;
+    ExcelUtility eat = null;
 
 
     @DataProvider(name="userData")
@@ -19,7 +19,7 @@ public class ExcelToDataProvider {
     public Object[][] testData(String xlFilePath, String sheetName) throws Exception
     {
         Object[][] excelData;
-        eat = new ReadExcelUtility(xlFilePath);
+        eat = new ExcelUtility(xlFilePath);
         int rows = eat.getRowCount(sheetName);
         int columns = eat.getColumnCount(sheetName);
 
