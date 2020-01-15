@@ -68,6 +68,7 @@ public class SomeTest3 extends TestBase {
     } else {
       System.out.println(error);
       Assert.fail();
+      /*test*/
     }
   }
 }
