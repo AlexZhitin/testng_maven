@@ -13,7 +13,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class SomeTest2 extends TestBase {
+public class SomeTest3 extends TestBase {
   private WebDriver driver;
   HomePage home_page;
   MobilePage mobile_page;
