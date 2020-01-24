@@ -67,7 +67,8 @@ public class SomeTest extends TestBase {
 
     
     if (mobile_smartphone_page.checkPhone(model)) {
-      Assert.assertTrue(true);
+      //Assert.assertTrue(true);
+      Assert.fail(); //should be true
     } else {
       System.out.println(error);
       ExtentTestManager.getTest().log(Status.INFO, error);
