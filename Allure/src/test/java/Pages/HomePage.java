@@ -1,6 +1,8 @@
 package Pages;
 
 import Base.AllureTestListener;
+import Helper.Utils;
+import Helper.Waiters;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -15,8 +17,11 @@ import java.util.List;
 
 public class HomePage {
 
-    @FindBy (xpath = "//li[@data-level='1']")
+    @FindBy(xpath = "//li[@data-level='1']")
     List<WebElement> sections;
+
+    @FindBy(xpath = "//*[@class='item-login']//a")
+    WebElement profile;
 
     protected WebDriver driver;
 
@@ -30,8 +35,7 @@ public class HomePage {
     @Step("Select the section \"{0}\" to open")
     public void clickSection(String section) {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, 10);
-            wait.until(ExpectedConditions.visibilityOfAllElements(sections));
+            Waiters.waitVisibilityOfAllElements(sections, 5, driver);
             for (WebElement i : sections)
                 if (i.getAttribute("class").contains(section)) {
                     i.click();
@@ -41,5 +45,10 @@ public class HomePage {
             AllureTestListener.saveTextLog(e.toString());
             System.out.println(e);
         }
+    }
+
+    @Step("Check if profile is displayed on the home page")
+    public boolean profileIsDisplayed() {
+        return Utils.elementIsDisplayed(profile, 5, driver);
     }
 }

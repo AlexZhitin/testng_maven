@@ -1,6 +1,7 @@
 package Pages;
 
 import Base.AllureTestListener;
+import Helper.Waiters;
 import com.aventstack.extentreports.Status;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
@@ -27,14 +28,15 @@ public class MobilePage {
 
         this.driver = driver;
         PageFactory.initElements(driver, this);
+
     }
 
     @Step("Getting page title")
     public String getPageTitleText() {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, 5);
-            wait.until(ExpectedConditions.visibilityOfAllElements(pageTitle));
-            System.out.println(pageTitle.getText());
+            /*WebDriverWait wait = new WebDriverWait(driver, 5);
+            wait.until(ExpectedConditions.visibilityOfAllElements(pageTitle));*/
+            Waiters.waitVisibilityOfElement(pageTitle, 5, driver);
             return pageTitle.getText();
         } catch (Throwable e) {
             AllureTestListener.saveTextLog(e.toString());

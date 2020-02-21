@@ -14,7 +14,7 @@
         <classes>
             <class name="Tests.SomeTest">
                 <methods>
-                    <include name="check_mobile_section_title"/>
+                    <include name="profile_is_displayed()"/>
                     <!--<include name="check_gifts_section_title"/>-->
                 </methods>
             </class>
