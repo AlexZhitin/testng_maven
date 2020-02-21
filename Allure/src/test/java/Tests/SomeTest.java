@@ -1,8 +1,8 @@
 package Tests;
 
-import Base.AllureTestListener;
 import Base.ExcelToDataProvider;
 import Base.TestBase;
+import Helper.Utils;
 import Pages.HomePage;
 import Pages.MobilePage;
 import io.qameta.allure.Description;
@@ -26,7 +26,6 @@ public class SomeTest extends TestBase {
     private String sectionGifts = "gifts";
     private String mobileSectionPageTitleRu = "Смартфоны, Телефоны";
     private String mobileSectionPageTitleUa = "Смартфони, Телефони";
-
     private String giftsSectionPageTitle = "Подарки к праздникам";
 
 
@@ -51,8 +50,7 @@ public class SomeTest extends TestBase {
         if (mobile_page.getPageTitleText().equals(mobileSectionPageTitleRu) || mobile_page.getPageTitleText().equals(mobileSectionPageTitleUa)) {
             Assert.assertTrue(true);
         } else {
-            System.out.println(error);
-            AllureTestListener.saveTextLog(error);
+            Utils.addErrorToAllureReport(error);
             Assert.fail();
         }
     }
@@ -71,8 +69,7 @@ public class SomeTest extends TestBase {
         if (mobile_page.getPageTitleText().equals(giftsSectionPageTitle)) {
             Assert.assertTrue(true);
         } else {
-            System.out.println(error);
-            AllureTestListener.saveTextLog(error);
+            Utils.addErrorToAllureReport(error);
             Assert.fail();
         }
     }
@@ -89,8 +86,7 @@ public class SomeTest extends TestBase {
         if (home_page.profileIsDisplayed()) {
             Assert.assertTrue(true);
         } else{
-            System.out.println(error);
-            AllureTestListener.saveTextLog(error);
+            Utils.addErrorToAllureReport(error);
             Assert.fail();
         }
     }
