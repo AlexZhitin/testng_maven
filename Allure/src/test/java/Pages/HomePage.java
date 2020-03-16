@@ -11,7 +11,7 @@ import java.util.List;
 
 public class HomePage {
 
-    @FindBy(xpath = "//li[@data-level='1']")
+    @FindBy(xpath = "//li/a/i")
     List<WebElement> sections;
 
     @FindBy(xpath = "//*[@class='item-login']//a")
