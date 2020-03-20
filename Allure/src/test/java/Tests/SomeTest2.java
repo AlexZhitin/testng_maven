@@ -83,7 +83,7 @@ public class SomeTest2 extends TestBase1 {
     String error = "Profile is not displayed on the home page";
 
     if (home_page.profileIsDisplayed()) {
-      Assert.assertTrue(false); //should be true
+      Assert.assertTrue(true);
     } else{
       Utils.addErrorToAllureReport(error);
       Assert.fail();
