@@ -1,6 +1,7 @@
 package Tests;
 
 import Base.TestBase;
+import Helper.Utils;
 import Pages.HomePage;
 import Pages.MobilePage;
 import io.qameta.allure.Description;
@@ -67,6 +68,23 @@ public class SomeTest2 extends TestBase {
       Assert.assertTrue(false); //should be true
     } else {
       System.out.println(error);
+      Assert.fail();
+    }
+  }
+
+  @Test(description = "Testcase: check if profile is displayed")
+  @Severity(SeverityLevel.NORMAL)
+  @Description("Testcase: verify if profile is displayed")
+  @Story("Story: to check is profiele is available on the home page")
+
+  public void profile_is_displayed() {
+
+    String error = "Profile is not displayed on the home page";
+
+    if (home_page.profileIsDisplayed()) {
+      Assert.assertTrue(true);
+    } else{
+      Utils.addErrorToAllureReport(error);
       Assert.fail();
     }
   }
