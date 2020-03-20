@@ -10,11 +10,12 @@ import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+import org.testng.annotations.Parameters;
 
 import java.io.File;
 import java.io.IOException;
 
-public class AllureTestListener implements ITestListener {
+public class AllureTestListener extends TestBase1 implements ITestListener {
 
 
     //Screenshot attachments for Allure
@@ -34,7 +35,6 @@ public class AllureTestListener implements ITestListener {
     public static String attachHtml(String html) {
         return html;
     }
-
 
 
     // Video attachments for Allure
@@ -96,11 +96,13 @@ public class AllureTestListener implements ITestListener {
         System.out.println("*** Executed " + result.getMethod().getMethodName() + " test method successfully...");
     }
 
+    @Parameters({"local"})
     @Override
     public void onTestFailure(ITestResult result) {
+        boolean local = true;
         System.out.println("*** Execution of a test method" + result.getMethod().getMethodName() + " of a test class " + result.getMethod().getRealClass().getName() + " failed...");
         Object testClass = result.getInstance();
-        WebDriver webDriver = ((TestBase) testClass).getDriver();
+        WebDriver webDriver = ((TestBase1) testClass).getDriver(local);
 
         System.out.println("Screenshot captured for test case:" + (result.getMethod().getMethodName()));
         saveScreenshotPNG(webDriver);

@@ -1,6 +1,6 @@
 package Tests;
 
-import Base.TestBase;
+import Base.TestBase1;
 import Pages.HomePage;
 import Pages.MobilePage;
 import io.qameta.allure.Description;
@@ -11,9 +11,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class SomeTest3 extends TestBase {
+public class SomeTest3 extends TestBase1 {
   private WebDriver driver;
   HomePage home_page;
   MobilePage mobile_page;
@@ -26,9 +27,10 @@ public class SomeTest3 extends TestBase {
 
 
 
+  @Parameters({"local"})
   @BeforeMethod
-  public void setUp() {
-    driver = getDriver();
+  public void setUp(boolean local) {
+    driver = getDriver(local);
     home_page = PageFactory.initElements(driver, HomePage.class);
     mobile_page = PageFactory.initElements(driver, MobilePage.class);
   }

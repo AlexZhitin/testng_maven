@@ -1,6 +1,6 @@
 package Tests;
 
-import Base.TestBase;
+import Base.TestBase1;
 import Helper.Utils;
 import Pages.HomePage;
 import Pages.MobilePage;
@@ -12,9 +12,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class SomeTest2 extends TestBase {
+public class SomeTest2 extends TestBase1 {
   private WebDriver driver;
   HomePage home_page;
   MobilePage mobile_page;
@@ -26,10 +27,10 @@ public class SomeTest2 extends TestBase {
 
 
 
-
+  @Parameters({"local"})
   @BeforeMethod
-  public void setUp() {
-    driver = getDriver();
+  public void setUp(boolean local) {
+    driver = getDriver(local);
     home_page = PageFactory.initElements(driver, HomePage.class);
     mobile_page = PageFactory.initElements(driver, MobilePage.class);
   }
@@ -82,7 +83,7 @@ public class SomeTest2 extends TestBase {
     String error = "Profile is not displayed on the home page";
 
     if (home_page.profileIsDisplayed()) {
-      Assert.assertTrue(true);
+      Assert.assertTrue(false); //should be true
     } else{
       Utils.addErrorToAllureReport(error);
       Assert.fail();
