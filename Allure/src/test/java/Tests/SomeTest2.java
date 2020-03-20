@@ -66,7 +66,7 @@ public class SomeTest2 extends TestBase1 {
     home_page.clickSection(sectionGifts);
 
     if (mobile_page.getPageTitleText().equals(giftsSectionPageTitle)) {
-      Assert.assertTrue(false); //should be true
+      Assert.assertTrue(true);
     } else {
       System.out.println(error);
       Assert.fail();
