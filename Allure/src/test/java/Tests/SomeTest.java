@@ -1,7 +1,7 @@
 package Tests;
 
 import Base.ExcelToDataProvider;
-import Base.TestBase1;
+import Base.TestBase;
 import Helper.Utils;
 import Pages.HomePage;
 import Pages.MobilePage;
@@ -16,7 +16,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class SomeTest extends TestBase1 {
+public class SomeTest extends TestBase {
     private WebDriver driver;
 
     HomePage home_page;

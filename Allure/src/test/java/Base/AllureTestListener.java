@@ -1,9 +1,6 @@
 package Base;
 
-import com.aventstack.extentreports.Status;
-import com.google.common.io.Files;
 import io.qameta.allure.Attachment;
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -12,11 +9,8 @@ import org.testng.ITestListener;
 import org.testng.ITestResult;
 import org.testng.annotations.Parameters;
 
-import java.io.File;
-import java.io.IOException;
 
-public class AllureTestListener extends TestBase1 implements ITestListener {
-
+public class AllureTestListener implements ITestListener {
 
     //Screenshot attachments for Allure
     @Attachment(value = "Page screenshot", type = "image/png")
@@ -96,18 +90,27 @@ public class AllureTestListener extends TestBase1 implements ITestListener {
         System.out.println("*** Executed " + result.getMethod().getMethodName() + " test method successfully...");
     }
 
-    @Parameters({"local"})
+   /* @Parameters({"local"})
+    public boolean Something(boolean local){
+        return value;
+    }*/
+
+
+
     @Override
     public void onTestFailure(ITestResult result) {
-        boolean local = true;
+        boolean local = false;
         System.out.println("*** Execution of a test method" + result.getMethod().getMethodName() + " of a test class " + result.getMethod().getRealClass().getName() + " failed...");
         Object testClass = result.getInstance();
-        WebDriver webDriver = ((TestBase1) testClass).getDriver(local);
+        WebDriver webDriver = ((TestBase) testClass).getDriver(local);
 
         System.out.println("Screenshot captured for test case:" + (result.getMethod().getMethodName()));
         saveScreenshotPNG(webDriver);
         saveTextLog(result.getMethod().getMethodName() + " failed and screenshot taken!");
     }
+
+
+
 
     @Override
     public void onTestSkipped(ITestResult result) {

@@ -2,6 +2,7 @@ package Pages;
 
 import Helper.Utils;
 import io.qameta.allure.Step;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,13 +12,15 @@ import java.util.List;
 
 public class HomePage {
 
+    protected WebDriver driver;
+
     @FindBy(xpath = "//li/a/i")
     List<WebElement> sections;
 
-    @FindBy(xpath = "//*[@class='item-login']//a")
+    @FindBy(xpath = "//*[@class='iiiiiiii']//a") //should be //*[@class='item-login']//a
     WebElement profile;
 
-    protected WebDriver driver;
+
 
     public HomePage(WebDriver driver) {
 

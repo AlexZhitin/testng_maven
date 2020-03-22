@@ -20,7 +20,7 @@ import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 
-public class TestBase1 {
+public class TestBase {
 
     WebDriver webdriver;
 
