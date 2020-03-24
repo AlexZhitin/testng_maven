@@ -29,10 +29,6 @@ public class TestBase {
     private String osname = System.getProperty("os.name");
     private static String driverPath = System.getProperty("user.dir") + "/src/main/resources/";
 
- /* //Get driver from ThreadLocalMap
-  public WebDriver getDriver() {
-    return driverLocal.get();
-  }*/
 
     private void setDriver(String browserType, String appURL) {
         switch (browserType) {
@@ -123,12 +119,7 @@ public class TestBase {
         driverLocal.set(driver);
     }
 
-    /*@AfterMethod
-    public void tearDown() {
 
-    getDriver().quit();
-        driverLocal.set(null);
-    }*/
 
     //Next part is for grid
 
@@ -161,12 +152,12 @@ public class TestBase {
         }
     }
 
-    //Get driver from ThreadLocalMap
 
+    //Get driver from ThreadLocalMap
 
     @Parameters({"local"})
     public WebDriver getDriver(boolean local) {
-        if (local==true) {
+        if (local == true) {
             return driverLocal.get();
         } else {
             return driverRemote.get();
@@ -185,16 +176,3 @@ public class TestBase {
         }
     }
 }
-
-
-/*@Parameters({"browserType"})
-
-  @AfterMethod
-  public void tearDown(String browserType) throws IOException, InterruptedException {
-    if (browserType.equals("safari")) {
-
-      driver.quit();
-      *//*Runtime.getRuntime().exec("killall Safari");*//*
-    } else {
-      driver.quit();
-    }*/

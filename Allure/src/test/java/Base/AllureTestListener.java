@@ -12,6 +12,8 @@ import org.testng.annotations.Parameters;
 
 public class AllureTestListener implements ITestListener {
 
+    private String local;
+
     //Screenshot attachments for Allure
     @Attachment(value = "Page screenshot", type = "image/png")
     public byte[] saveScreenshotPNG(WebDriver driver) {
@@ -71,6 +73,7 @@ public class AllureTestListener implements ITestListener {
 
     public void onStart(ITestContext context) {
         System.out.println(context.getName() + " started ***");
+        local = context.getCurrentXmlTest().getParameter("local");
     }
 
     public void onFinish(ITestContext context) {
@@ -90,26 +93,15 @@ public class AllureTestListener implements ITestListener {
         System.out.println("*** Executed " + result.getMethod().getMethodName() + " test method successfully...");
     }
 
-   /* @Parameters({"local"})
-    public boolean Something(boolean local){
-        return value;
-    }*/
-
-
-
     @Override
     public void onTestFailure(ITestResult result) {
-        boolean local = true;
         System.out.println("*** Execution of a test method" + result.getMethod().getMethodName() + " of a test class " + result.getMethod().getRealClass().getName() + " failed...");
         Object testClass = result.getInstance();
-        WebDriver webDriver = ((TestBase) testClass).getDriver(local);
-
-        System.out.println("Screenshot captured for test case:" + (result.getMethod().getMethodName()));
+        WebDriver webDriver = ((TestBase) testClass).getDriver(Boolean.parseBoolean(local));
+        System.out.println("Screenshot captured for test case: " + (result.getMethod().getMethodName()));
         saveScreenshotPNG(webDriver);
         saveTextLog(result.getMethod().getMethodName() + " failed and screenshot taken!");
     }
-
-
 
 
     @Override

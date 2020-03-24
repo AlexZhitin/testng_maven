@@ -35,6 +35,6 @@ public class HomePage {
 
     @Step("Check if profile is displayed on the home page")
     public boolean profileIsDisplayed() {
-        return Utils.elementIsDisplayed(profile, 5, driver);
+        return Utils.elementIsDisplayed(profile, 3, driver);
     }
 }
