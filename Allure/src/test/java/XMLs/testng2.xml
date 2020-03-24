@@ -8,11 +8,11 @@
     </listeners>
 
     <parameter name="appURL" value="https://hotline.ua"/>
-    <parameter name="local" value="true"/>
 
     <test verbose="2" name="Chrome_tests" parallel="classes" thread-count="1">
         <parameter name="browser" value="chrome"/>
         <parameter name="platform" value="mac"/>
+        <parameter name="local" value="true"/>
         <classes>
             <class name="Tests.SomeTest2">
                 <methods>
