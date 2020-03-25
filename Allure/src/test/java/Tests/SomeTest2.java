@@ -22,8 +22,10 @@ public class SomeTest2 extends TestBase {
 
   private String sectionMobile = "mobile";
   private String sectionGifts = "gifts";
-  private String mobileSectionPageTitle = "Смартфоны, Телефоны";
-  private String giftsSectionPageTitle = "Подарки к праздникам";
+  private String mobileSectionPageTitleRu = "Смартфоны, Телефоны";
+  private String mobileSectionPageTitleUa = "Смартфони, Телефони";
+  private String giftsSectionPageTitleRu = "Подарки к праздникам";
+  private String giftsSectionPageTitleUa = "Подарунки";
 
 
 
@@ -46,15 +48,15 @@ public class SomeTest2 extends TestBase {
 
     home_page.clickSection(sectionMobile);
 
-    if (mobile_page.getPageTitleText().equals(mobileSectionPageTitle)) {
+    if (mobile_page.getPageTitleText().equals(mobileSectionPageTitleRu) || mobile_page.getPageTitleText().equals(mobileSectionPageTitleUa)) {
       Assert.assertTrue(true);
     } else {
-      System.out.println(error);
+      Utils.addErrorToAllureReport(error);
       Assert.fail();
     }
   }
 
-  @Test (description = "Testcase: verify gifts page title")
+  @Test(description = "Testcase: verify gifts page title")
   @Severity(SeverityLevel.NORMAL)
   @Description("Testcase: verify gifts page title")
   @Story("Story: to check gifts page title")
@@ -65,10 +67,10 @@ public class SomeTest2 extends TestBase {
 
     home_page.clickSection(sectionGifts);
 
-    if (mobile_page.getPageTitleText().equals(giftsSectionPageTitle)) {
+    if (mobile_page.getPageTitleText().equals(giftsSectionPageTitleRu) || mobile_page.getPageTitleText().equals(giftsSectionPageTitleUa)) {
       Assert.assertTrue(true);
     } else {
-      System.out.println(error);
+      Utils.addErrorToAllureReport(error);
       Assert.fail();
     }
   }

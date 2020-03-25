@@ -10,16 +10,41 @@
     <parameter name="appURL" value="https://hotline.ua"/>
     <parameter name="local" value="false"/>
 
-    <test verbose="2" name="Chrome_tests" parallel="classes" thread-count="1">
+    <test verbose="2" name="Chrome_tests" parallel="classes" thread-count="2">
         <parameter name="browser" value="chrome"/>
         <parameter name="platform" value="mac"/>
         <classes>
+            <class name="Tests.SomeTest">
+                <methods>
+                    <include name="profile_is_displayed"/>
+                    <include name="check_gifts_section_title"/>
+                    <include name="check_mobile_section_title"/>
+                </methods>
+            </class>
             <class name="Tests.SomeTest2">
                 <methods>
                     <include name="profile_is_displayed"/>
-                    <!--<include name="check_gifts_section_title"/>-->
+                    <include name="check_gifts_section_title"/>
                 </methods>
             </class>
         </classes>
     </test>
+
+    <!--<test verbose="2" name="Firefox_tests" parallel="classes" thread-count="2">
+        <parameter name="browserType" value="firefox"/>
+        <classes>
+            <class name="Tests.SomeTest">
+                <methods>
+                    <include name="check_mobile_section_title"/>
+                    <include name="check_gifts_section_title"/>
+                </methods>
+            </class>
+            <class name="Tests.SomeTest2">
+                <methods>
+                    <include name="check_mobile_section_title"/>
+                    <include name="check_gifts_section_title"/>
+                </methods>
+            </class>
+        </classes>
+    </test>-->
 </suite>
