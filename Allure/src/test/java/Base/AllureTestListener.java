@@ -98,8 +98,8 @@ public class AllureTestListener implements ITestListener {
         System.out.println("*** Execution of a test method" + result.getMethod().getMethodName() + " of a test class " + result.getMethod().getRealClass().getName() + " failed...");
         Object testClass = result.getInstance();
         WebDriver webDriver = ((TestBase) testClass).getDriver(Boolean.parseBoolean(local));
-        System.out.println("Screenshot captured for test case: " + (result.getMethod().getMethodName()));
         saveScreenshotPNG(webDriver);
+        System.out.println("Screenshot captured for test case: " + (result.getMethod().getMethodName()));
         saveTextLog(result.getMethod().getMethodName() + " failed and screenshot taken!");
     }
 
