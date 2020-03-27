@@ -1,21 +1,19 @@
 package Base;
 
-import com.aventstack.extentreports.Status;
-import com.google.common.io.Files;
+import Helper.Waiters;
 import io.qameta.allure.Attachment;
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+import org.testng.annotations.Parameters;
 
-import java.io.File;
-import java.io.IOException;
 
 public class AllureTestListener implements ITestListener {
 
+    private String local;
 
     //Screenshot attachments for Allure
     @Attachment(value = "Page screenshot", type = "image/png")
@@ -34,7 +32,6 @@ public class AllureTestListener implements ITestListener {
     public static String attachHtml(String html) {
         return html;
     }
-
 
 
     // Video attachments for Allure
@@ -76,7 +73,12 @@ public class AllureTestListener implements ITestListener {
     }*/
 
     public void onStart(ITestContext context) {
-        System.out.println(context.getName() + " started ***");
+        local = context.getCurrentXmlTest().getParameter("local");
+        if (local.equals("true")) {
+            System.out.println(context.getName() + " started locally ***");
+        } else if (local.equals("false")) {
+            System.out.println(context.getName() + " started on server/remotely ***");
+        }
     }
 
     public void onFinish(ITestContext context) {
@@ -100,12 +102,13 @@ public class AllureTestListener implements ITestListener {
     public void onTestFailure(ITestResult result) {
         System.out.println("*** Execution of a test method" + result.getMethod().getMethodName() + " of a test class " + result.getMethod().getRealClass().getName() + " failed...");
         Object testClass = result.getInstance();
-        WebDriver webDriver = ((TestBase) testClass).getDriver();
+        WebDriver webDriver = ((TestBase) testClass).getDriver(Boolean.parseBoolean(local));
 
-        System.out.println("Screenshot captured for test case:" + (result.getMethod().getMethodName()));
         saveScreenshotPNG(webDriver);
         saveTextLog(result.getMethod().getMethodName() + " failed and screenshot taken!");
+        System.out.println("Screenshot captured for test case: " + (result.getMethod().getMethodName()));
     }
+
 
     @Override
     public void onTestSkipped(ITestResult result) {

@@ -1,6 +1,7 @@
 package Tests;
 
 import Base.TestBase;
+import Helper.Utils;
 import Pages.HomePage;
 import Pages.MobilePage;
 import io.qameta.allure.Description;
@@ -11,6 +12,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class SomeTest3 extends TestBase {
@@ -20,15 +22,17 @@ public class SomeTest3 extends TestBase {
 
   private String sectionMobile = "mobile";
   private String sectionGifts = "gifts";
-  private String mobileSectionPageTitle = "Смартфоны, Телефоны";
-  private String giftsSectionPageTitle = "Подарки к праздникам";
+  private String mobileSectionPageTitleRu = "Смартфоны, Телефоны";
+  private String mobileSectionPageTitleUa = "Смартфони, Телефони";
+  private String giftsSectionPageTitleRu = "Подарки к праздникам";
+  private String giftsSectionPageTitleUa = "Подарунки";
 
 
 
-
+  @Parameters({"local"})
   @BeforeMethod
-  public void setUp() {
-    driver = getDriver();
+  public void setUp(boolean local) {
+    driver = getDriver(local);
     home_page = PageFactory.initElements(driver, HomePage.class);
     mobile_page = PageFactory.initElements(driver, MobilePage.class);
   }
@@ -44,15 +48,15 @@ public class SomeTest3 extends TestBase {
 
     home_page.clickSection(sectionMobile);
 
-    if (mobile_page.getPageTitleText().equals(mobileSectionPageTitle)) {
+    if (mobile_page.getPageTitleText().equals(mobileSectionPageTitleRu) || mobile_page.getPageTitleText().equals(mobileSectionPageTitleUa)) {
       Assert.assertTrue(true);
     } else {
-      System.out.println(error);
+      Utils.addErrorToAllureReport(error);
       Assert.fail();
     }
   }
 
-  @Test (description = "Testcase: verify gifts page title")
+  @Test(description = "Testcase: verify gifts page title")
   @Severity(SeverityLevel.NORMAL)
   @Description("Testcase: verify gifts page title")
   @Story("Story: to check gifts page title")
@@ -63,12 +67,28 @@ public class SomeTest3 extends TestBase {
 
     home_page.clickSection(sectionGifts);
 
-    if (mobile_page.getPageTitleText().equals(giftsSectionPageTitle)) {
-      Assert.assertTrue(false); //should be true
+    if (mobile_page.getPageTitleText().equals(giftsSectionPageTitleRu) || mobile_page.getPageTitleText().equals(giftsSectionPageTitleUa)) {
+      Assert.assertTrue(true);
     } else {
-      System.out.println(error);
+      Utils.addErrorToAllureReport(error);
       Assert.fail();
-      /*test merge*/
+    }
+  }
+
+  @Test(description = "Testcase: check if profile is displayed")
+  @Severity(SeverityLevel.NORMAL)
+  @Description("Testcase: verify if profile is displayed")
+  @Story("Story: to check is profiele is available on the home page")
+
+  public void profile_is_displayed() {
+
+    String error = "Profile is not displayed on the home page";
+
+    if (home_page.profileIsDisplayed()) {
+      Assert.assertTrue(true);
+    } else{
+      Utils.addErrorToAllureReport(error);
+      Assert.fail();
     }
   }
 }
