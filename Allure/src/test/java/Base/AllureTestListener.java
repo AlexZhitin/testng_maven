@@ -102,7 +102,7 @@ public class AllureTestListener implements ITestListener {
     public void onTestFailure(ITestResult result) {
         System.out.println("*** Execution of a test method" + result.getMethod().getMethodName() + " of a test class " + result.getMethod().getRealClass().getName() + " failed...");
         Object testClass = result.getInstance();
-        WebDriver webDriver = ((TestBase) testClass).getDriver(Boolean.parseBoolean(local));
+        WebDriver webDriver = ((TestBase) testClass).getDriver(local);
 
         saveScreenshotPNG(webDriver);
         saveTextLog(result.getMethod().getMethodName() + " failed and screenshot taken!");

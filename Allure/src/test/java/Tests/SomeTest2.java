@@ -31,7 +31,7 @@ public class SomeTest2 extends TestBase {
 
   @Parameters({"local"})
   @BeforeMethod
-  public void setUp(boolean local) {
+  public void setUp(String local) {
     driver = getDriver(local);
     home_page = PageFactory.initElements(driver, HomePage.class);
     mobile_page = PageFactory.initElements(driver, MobilePage.class);
