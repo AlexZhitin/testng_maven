@@ -97,8 +97,8 @@ public class TestBase {
 
     @BeforeMethod
     @Parameters({"local", "browser", "appURL", "platform"})
-    public void LocalOrRemote (boolean local, String browser, String appURL, String platform) throws MalformedURLException, InterruptedException {
-        if (local){
+    public void LocalOrRemote (String local, String browser, String appURL, String platform) throws MalformedURLException, InterruptedException {
+        if (local.equals("true")){
             initializeTestBaseSetup(browser, appURL);
         } else {
             setup(browser, appURL, platform, local);
@@ -127,7 +127,7 @@ public class TestBase {
     public CapabilityFactory capabilityFactory = new CapabilityFactory();
 
 
-    public void setup(String browser, String appURL, /*String browser_version,*/ String platform, boolean local) throws MalformedURLException, InterruptedException {
+    public void setup(String browser, String appURL, /*String browser_version,*/ String platform, String local) throws MalformedURLException, InterruptedException {
         //Set Browser to ThreadLocalMap
         driverRemote.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilityFactory.getCapabilities(browser, /*browser_version,*/ platform)));
 
@@ -156,8 +156,8 @@ public class TestBase {
     //Get driver from ThreadLocalMap
 
     @Parameters({"local"})
-    public WebDriver getDriver(boolean local) {
-        if (local == true) {
+    public WebDriver getDriver(String local) {
+        if (local.equals("true")) {
             return driverLocal.get();
         } else {
             return driverRemote.get();
@@ -166,12 +166,12 @@ public class TestBase {
 
     @Parameters({"local"})
     @AfterMethod
-    public void tearDown(boolean local) {
-        if (local == true) {
-            getDriver(true).quit();
+    public void tearDown(String local) {
+        if (local.equals("true")) {
+            getDriver(local).quit();
             driverLocal.set(null);
         } else {
-            getDriver(false).quit();
+            getDriver(local).quit();
             driverRemote.remove();
         }
     }

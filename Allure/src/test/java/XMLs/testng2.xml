@@ -36,7 +36,7 @@
 
 
 
-    <!--<test verbose="2" name="Firefox_tests" parallel="classes" thread-count="2">
+   <!-- <test verbose="2" name="Firefox_tests" parallel="classes" thread-count="2">
         <parameter name="browser" value="firefox"/>
         <parameter name="platform" value="mac"/>
         <classes>
@@ -55,9 +55,9 @@
             </class>
         </classes>
     </test>
--->
 
-   <!-- <test verbose="2" name="Safari_tests" parallel="classes" thread-count="1">
+
+    <test verbose="2" name="Safari_tests" parallel="classes" thread-count="1">
         <parameter name="browser" value="safari"/>
         <parameter name="platform" value="mac"/>
         <classes>
