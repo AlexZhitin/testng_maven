@@ -5,6 +5,7 @@ import org.testng.annotations.DataProvider;
 public class ExcelToDataProvider {
 
     String xlFilePath = "/Users/Sasha/Documents/Selenium_projects/testng_maven/Allure/src/test/java/Data/testdata.xlsx";
+    String xlFilePathLogin = "/Users/Sasha/Documents/Selenium_projects/testng_maven/Allure/src/test/java/Data/testdatalogin.xlsx";
     String sheetName = "Credentials";
     ExcelUtility eat = null;
 
@@ -13,6 +14,13 @@ public class ExcelToDataProvider {
     public Object[][] userFormData() throws Exception
     {
         Object[][] data = testData(xlFilePath, sheetName);
+        return data;
+    }
+
+    @DataProvider(name="userDataLogin")
+    public Object[][] userFormDataLogin() throws Exception
+    {
+        Object[][] data = testData(xlFilePathLogin, sheetName);
         return data;
     }
 

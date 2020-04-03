@@ -38,4 +38,24 @@ public class Utils {
             System.out.println(e);
         }
     }
+
+    public static void clickElement(WebElement element, int time, WebDriver driver) {
+        try {
+            Waiters.waitVisibilityOfElement(element, time, driver);
+            element.click();
+        } catch (Throwable e) {
+            AllureTestListener.saveTextLog(e.toString());
+            System.out.println(e);
+        }
+    }
+
+    public static void input (WebElement element, int time, WebDriver driver, String input) {
+        try {
+            Waiters.waitVisibilityOfElement(element, time, driver);
+            element.sendKeys(input);
+        } catch (Throwable e) {
+            AllureTestListener.saveTextLog(e.toString());
+            System.out.println(e);
+        }
+    }
 }

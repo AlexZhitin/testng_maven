@@ -4,6 +4,7 @@ import Base.ExcelToDataProvider;
 import Base.TestBase;
 import Helper.Utils;
 import Pages.HomePage;
+import Pages.LoginPage;
 import Pages.MobilePage;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
@@ -21,6 +22,7 @@ public class SomeTest extends TestBase {
 
     HomePage home_page;
     MobilePage mobile_page;
+    LoginPage login_page;
 
 
     private String sectionMobile = "mobile";
@@ -36,6 +38,7 @@ public class SomeTest extends TestBase {
         driver = getDriver(local);
         home_page = PageFactory.initElements(driver, HomePage.class);
         mobile_page = PageFactory.initElements(driver, MobilePage.class);
+        login_page = PageFactory.initElements(driver, LoginPage.class);
     }
 
     @Test(description = "Testcase: verify mobile page title")
@@ -81,13 +84,13 @@ public class SomeTest extends TestBase {
     @Description("Testcase: verify if profile is displayed")
     @Story("Story: to check is profiele is available on the home page")
 
-      public void profile_is_displayed() {
+    public void profile_is_displayed() {
 
         String error = "Profile is not displayed on the home page";
 
         if (home_page.profileIsDisplayed()) {
             Assert.assertTrue(true);
-        } else{
+        } else {
             Utils.addErrorToAllureReport(error);
             Assert.fail();
         }
@@ -100,6 +103,7 @@ public class SomeTest extends TestBase {
 
     public void read_from_excel(String userName, String passWord, String dateCreated, String noOfAttempts, String result) {
 
+
         System.out.println("UserName: " + userName);
         System.out.println("PassWord: " + passWord);
         System.out.println("DateCreated: " + dateCreated);
@@ -107,7 +111,28 @@ public class SomeTest extends TestBase {
         System.out.println("Result: " + result);
         System.out.println("*********************");
 
-        /*test2*/
+    }
 
+    @Test(description = "", dataProviderClass = ExcelToDataProvider.class, dataProvider = "userDataLogin")
+    @Severity(SeverityLevel.NORMAL)
+    @Description("")
+    @Story("Story: ")
+
+    public void invalid_login(String email, String password) {
+
+
+        String error = "Error wasn't shown";
+
+        home_page.clickProfileToLogin();
+        login_page.typeEmail(email);
+        login_page.typePassword(password);
+        login_page.clickSubmit();
+
+        if (login_page.errorDisplayed()||login_page.errorMessageDisplayed()) {
+            Assert.assertTrue(true);
+        } else {
+            Utils.addErrorToAllureReport(error);
+            Assert.fail();
+        }
     }
 }

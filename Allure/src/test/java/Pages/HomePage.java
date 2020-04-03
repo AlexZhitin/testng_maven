@@ -17,9 +17,8 @@ public class HomePage {
     @FindBy(xpath = "//li/a/i")
     List<WebElement> sections;
 
-    @FindBy(xpath = "//*[@class='iiiiiiii']//a") //should be //*[@class='item-login']//a
+    @FindBy(xpath = "//*[@class='item-login']//a")
     WebElement profile;
-
 
 
     public HomePage(WebDriver driver) {
@@ -35,6 +34,11 @@ public class HomePage {
 
     @Step("Check if profile is displayed on the home page")
     public boolean profileIsDisplayed() {
-        return Utils.elementIsDisplayed(profile, 3, driver);
+        return Utils.elementIsDisplayed(profile, 5, driver);
+    }
+
+    @Step("Click profile to open the login screen")
+    public void clickProfileToLogin() {
+        Utils.clickElement(profile, 5, driver);
     }
 }

@@ -10,27 +10,27 @@
 
 
     <parameter name="appURL" value="https://hotline.ua"/>
-    <parameter name="local" value="false"/>
+    <parameter name="local" value="true"/>
 
 
 
-    <test verbose="2" name="Chrome_tests" parallel="classes" thread-count="2">
+    <test verbose="2" name="Chrome_tests" parallel="classes" thread-count="1">
         <parameter name="browser" value="chrome"/>
         <parameter name="platform" value="mac"/>
         <classes>
             <class name="Tests.SomeTest">
                 <methods>
-                    <include name="profile_is_displayed"/>
-                    <include name="check_gifts_section_title"/>
-                    <include name="check_mobile_section_title"/>
+                    <include name="invalid_login"/>
+                   <!-- <include name="check_gifts_section_title"/>
+                    <include name="check_mobile_section_title"/>-->
                 </methods>
             </class>
-            <class name="Tests.SomeTest2">
+            <!--<class name="Tests.SomeTest2">
                 <methods>
                     <include name="profile_is_displayed"/>
                     <include name="check_gifts_section_title"/>
                 </methods>
-            </class>
+            </class>-->
         </classes>
     </test>
 
