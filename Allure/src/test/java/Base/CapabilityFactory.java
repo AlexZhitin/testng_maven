@@ -30,7 +30,7 @@ public class CapabilityFactory {
         options.merge(cap);*/
 
         /*options.setCapability("browserVersion", browser_version);*/
-        options.setCapability("os", platform);      //should be taken as example
+        options.setCapability("platform", platform);      //should be taken as example
         options.setCapability("browser", browser);  //should be taken as example
         /*cap.setCapability("os_version", "10");
         cap.setCapability("resolution", "1024x768");
