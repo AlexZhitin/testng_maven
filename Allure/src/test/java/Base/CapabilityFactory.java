@@ -25,13 +25,13 @@ public class CapabilityFactory {
     public ChromeOptions getChromeOptions( String platform, String browser) {
         ChromeOptions options = new ChromeOptions();
         /*DesiredCapabilities cap = DesiredCapabilities.chrome();
-        cap.setCapability("browser_version", browser_version); //should be taken as example
+        cap.setCapability("version", browser_version);
         cap.setCapability("os", platform);
         options.merge(cap);*/
 
-        /*options.setCapability("browserVersion", browser_version);*/
+        /*options.setCapability("version", browser_version);*/   //should be taken as example
         options.setCapability("platform", platform);      //should be taken as example
-        options.setCapability("browser", browser);  //should be taken as example
+        options.setCapability("browser", browser);        //should be taken as example
         /*cap.setCapability("os_version", "10");
         cap.setCapability("resolution", "1024x768");
         cap.setCapability("name", "Bstack-[Java] Sample Test");*/
