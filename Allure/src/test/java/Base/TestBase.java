@@ -96,12 +96,12 @@ public class TestBase {
     }
 
     @BeforeMethod
-    @Parameters({"local", "browser", "appURL", "platform"})
-    public void LocalOrRemote (String local, String browser, String appURL, String platform) throws MalformedURLException, InterruptedException {
+    @Parameters({"local", "browser", "appURL", "platform", "browser_version"})
+    public void LocalOrRemote (String local, String browser, String appURL, String platform, String browser_version) throws MalformedURLException, InterruptedException {
         if (local.equals("true")){
             initializeTestBaseSetup(browser, appURL);
         } else {
-            setup(browser, appURL, platform, local);
+            setup(browser, appURL, platform, local, browser_version);
         }
     }
 
@@ -127,9 +127,9 @@ public class TestBase {
     public CapabilityFactory capabilityFactory = new CapabilityFactory();
 
 
-    public void setup(String browser, String appURL, /*String browser_version,*/ String platform, String local) throws MalformedURLException, InterruptedException {
+    public void setup(String browser, String appURL, String browser_version, String platform, String local) throws MalformedURLException, InterruptedException {
         //Set Browser to ThreadLocalMap
-        driverRemote.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilityFactory.getCapabilities(browser, /*browser_version,*/ platform)));
+        driverRemote.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilityFactory.getCapabilities(browser, browser_version, platform)));
 
         /*getDriver().manage().window().maximize();*/
        /* Toolkit toolkit = Toolkit.getDefaultToolkit();
