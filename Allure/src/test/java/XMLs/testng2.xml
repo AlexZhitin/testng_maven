@@ -8,16 +8,13 @@
     </listeners>
 
 
-
     <parameter name="appURL" value="https://hotline.ua"/>
     <parameter name="local" value="false"/>
-
-
 
     <test verbose="2" name="Chrome_tests" parallel="classes" thread-count="1">
         <parameter name="browser" value="chrome"/>
         <parameter name="platform" value="linux"/>
-        <parameter name="browser_version" value="null"/>
+        <parameter name="version" value="81"/>
         <classes>
             <class name="Tests.SomeTest">
                 <methods>
@@ -33,7 +30,6 @@
             </class>-->
         </classes>
     </test>
-
 
 
     <!--<test verbose="2" name="Firefox_tests" parallel="classes" thread-count="2">

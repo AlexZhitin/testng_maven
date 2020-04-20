@@ -9,9 +9,9 @@ import org.openqa.selenium.safari.SafariOptions;
 public class CapabilityFactory {
     public Capabilities capabilities;
 
-    public Capabilities getCapabilities(String browser, String platform, String browser_version) {
+    public Capabilities getCapabilities(String platform, String browser, String version) {
         if (browser.equals("chrome"))
-            capabilities = getChromeOptions(platform, browser, browser_version);
+            capabilities = getChromeOptions(platform, browser, version);
         if (browser.equals("firefox"))
             capabilities = getFirefoxOptions(platform, browser);
         if (browser.equals("safari"))
@@ -22,15 +22,17 @@ public class CapabilityFactory {
     }
 
     //Get Chrome Options
-    public ChromeOptions getChromeOptions( String platform, String browser, String browser_version) {
+    public ChromeOptions getChromeOptions(String platform, String browser, String version) {
         ChromeOptions options = new ChromeOptions();
-        /*DesiredCapabilities cap = DesiredCapabilities.chrome();
-        cap.setCapability("version", browser_version);
-        cap.setCapability("os", platform);
-        options.merge(cap);*/
-        options.setCapability("version", browser_version);   //should be taken as example
-        options.setCapability("platform", platform);      //should be taken as example
-        options.setCapability("browser", browser);        //should be taken as example
+
+        options.setCapability("platform", platform);
+        options.setCapability("browser", browser);
+        options.setCapability("version", version);
+        options.setCapability("enableVNC", true);
+        options.setCapability("enableVideo", false);
+
+
+
         /*cap.setCapability("os_version", "10");
         cap.setCapability("resolution", "1024x768");
         cap.setCapability("name", "Bstack-[Java] Sample Test");*/
