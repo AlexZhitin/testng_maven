@@ -13,7 +13,8 @@ buildNumber.properties
 /.idea/
 *.html
 *.iml
-*.json
+/allure-report/
+/allure-result/
 .DS_Store
 log/
 
