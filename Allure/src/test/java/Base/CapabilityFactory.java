@@ -13,7 +13,7 @@ public class CapabilityFactory {
         if (browser.equals("chrome"))
             capabilities = getChromeOptions(platform, browser, version);
         if (browser.equals("firefox"))
-            capabilities = getFirefoxOptions(platform, browser);
+            capabilities = getFirefoxOptions(platform, browser, version);
         if (browser.equals("safari"))
             capabilities = getSafariOptions(platform, browser);
         if (browser.equals("MicrosoftEdge"))
@@ -44,20 +44,21 @@ public class CapabilityFactory {
     }
 
     //Get Firefox Options
-    public FirefoxOptions getFirefoxOptions(/*String browser_version,*/ String platform, String browser) {
+    public FirefoxOptions getFirefoxOptions(String platform, String browser, String version) {
 
         FirefoxOptions options = new FirefoxOptions();
 
 
         /*System.setProperty("webdriver.gecko.driver", "/Users/Sasha/Documents/Selenium_projects/testng_maven/SeleniumGrid/src/main/resources/geckodriver");*/
-        /*options.setCapability("browserVersion", browser_version);*/
-        options.setCapability("platformName", platform);
+
+        options.setCapability("platform", platform);
         options.setCapability("browserName", browser);
+        options.setCapability("version", version);
+        options.setCapability("enableVNC", true);
+        options.setCapability("enableVideo", false);
         /*options.addArguments("--start-maximized");*/
-        /*DesiredCapabilities cap = DesiredCapabilities.firefox();
-        cap.setCapability("browser_version", browser_version);
-        cap.setCapability("os", platform);
-        options.merge(cap);*/
+
+
         /*FirefoxProfile profile = new FirefoxProfile();
         //Accept Untrusted Certificates
         profile.setAcceptUntrustedCertificates(true);
