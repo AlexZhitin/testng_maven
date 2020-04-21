@@ -10,13 +10,13 @@
 
 
     <parameter name="appURL" value="https://hotline.ua"/>
-    <parameter name="local" value="false"/>
+    <parameter name="local" value="true"/>
 
 
 
     <test verbose="2" name="Chrome_tests" parallel="classes" thread-count="2">
         <parameter name="browser" value="chrome"/>
-        <parameter name="platform" value="windows"/>
+        <parameter name="platform" value="mac"/>
         <classes>
             <class name="Tests.SomeTest">
                 <methods>
