@@ -15,7 +15,6 @@ buildNumber.properties
 *.iml
 /allure-report/
 /allure-result/
-/Selenoid/Video/
 .DS_Store
 log/
 
