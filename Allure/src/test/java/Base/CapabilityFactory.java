@@ -9,11 +9,11 @@ import org.openqa.selenium.safari.SafariOptions;
 public class CapabilityFactory {
     public Capabilities capabilities;
 
-    public Capabilities getCapabilities(String browser, String platform, String browser_version) {
+    public Capabilities getCapabilities(String platform, String browser, String version) {
         if (browser.equals("chrome"))
-            capabilities = getChromeOptions(platform, browser, browser_version);
+            capabilities = getChromeOptions(platform, browser, version);
         if (browser.equals("firefox"))
-            capabilities = getFirefoxOptions(platform, browser);
+            capabilities = getFirefoxOptions(platform, browser, version);
         if (browser.equals("safari"))
             capabilities = getSafariOptions(platform, browser);
         if (browser.equals("MicrosoftEdge"))
@@ -22,15 +22,17 @@ public class CapabilityFactory {
     }
 
     //Get Chrome Options
-    public ChromeOptions getChromeOptions( String platform, String browser, String browser_version) {
+    public ChromeOptions getChromeOptions(String platform, String browser, String version) {
         ChromeOptions options = new ChromeOptions();
-        /*DesiredCapabilities cap = DesiredCapabilities.chrome();
-        cap.setCapability("version", browser_version);
-        cap.setCapability("os", platform);
-        options.merge(cap);*/
-        options.setCapability("version", browser_version);   //should be taken as example
-        options.setCapability("platform", platform);      //should be taken as example
-        options.setCapability("browser", browser);        //should be taken as example
+
+        options.setCapability("platform", platform);
+        options.setCapability("browser", browser);
+        options.setCapability("version", version);
+        options.setCapability("enableVNC", true);
+        options.setCapability("enableVideo", false);
+
+
+
         /*cap.setCapability("os_version", "10");
         cap.setCapability("resolution", "1024x768");
         cap.setCapability("name", "Bstack-[Java] Sample Test");*/
@@ -42,20 +44,21 @@ public class CapabilityFactory {
     }
 
     //Get Firefox Options
-    public FirefoxOptions getFirefoxOptions(/*String browser_version,*/ String platform, String browser) {
+    public FirefoxOptions getFirefoxOptions(String platform, String browser, String version) {
 
         FirefoxOptions options = new FirefoxOptions();
 
 
         /*System.setProperty("webdriver.gecko.driver", "/Users/Sasha/Documents/Selenium_projects/testng_maven/SeleniumGrid/src/main/resources/geckodriver");*/
-        /*options.setCapability("browserVersion", browser_version);*/
-        options.setCapability("platformName", platform);
+
+        options.setCapability("platform", platform);
         options.setCapability("browserName", browser);
+        options.setCapability("version", version);
+        options.setCapability("enableVNC", true);
+        options.setCapability("enableVideo", false);
         /*options.addArguments("--start-maximized");*/
-        /*DesiredCapabilities cap = DesiredCapabilities.firefox();
-        cap.setCapability("browser_version", browser_version);
-        cap.setCapability("os", platform);
-        options.merge(cap);*/
+
+
         /*FirefoxProfile profile = new FirefoxProfile();
         //Accept Untrusted Certificates
         profile.setAcceptUntrustedCertificates(true);
