@@ -29,7 +29,7 @@ public class CapabilityFactory {
         options.setCapability("browser", browser);
         options.setCapability("version", version);
         options.setCapability("enableVNC", true);
-        options.setCapability("enableVideo", false);
+        options.setCapability("enableVideo", true);
 
 
 

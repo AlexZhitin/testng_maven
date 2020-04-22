@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite" parallel="tests" thread-count="4">
+<suite name="Suite" parallel="tests" thread-count="3">  <!--3 sessions are advised to run in parallel on dual core cpu-->
 
     <listeners>
         <listener class-name="Base.AllureTestListener"/>
@@ -23,12 +23,12 @@
                     <include name="check_mobile_section_title"/>
                 </methods>
             </class>
-            <class name="Tests.SomeTest2">
+            <!--<class name="Tests.SomeTest2">
                 <methods>
                     <include name="profile_is_displayed"/>
                     <include name="check_gifts_section_title"/>
                 </methods>
-            </class>
+            </class>-->
         </classes>
     </test>
 
@@ -43,12 +43,12 @@
                     <include name="check_gifts_section_title"/>
                 </methods>
             </class>
-            &lt;!&ndash; <class name="Tests.SomeTest2">
+             <class name="Tests.SomeTest2">
                  <methods>
                      <include name="profile_is_displayed"/>
                      <include name="check_gifts_section_title"/>
                  </methods>
-             </class>&ndash;&gt;
+             </class>
         </classes>
     </test>-->
 

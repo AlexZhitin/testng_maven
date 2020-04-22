@@ -15,6 +15,7 @@ buildNumber.properties
 *.iml
 /allure-report/
 /allure-result/
+/Video/
 .DS_Store
 log/
 

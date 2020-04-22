@@ -97,8 +97,8 @@ public class TestBase {
 
     @BeforeMethod
     @Parameters({"local", "browser", "appURL", "platform", "version"})
-    public void LocalOrRemote (String local, String browser, String appURL, String platform, String version) throws MalformedURLException, InterruptedException {
-        if (local.equals("true")){
+    public void LocalOrRemote(String local, String browser, String appURL, String platform, String version) throws MalformedURLException, InterruptedException {
+        if (local.equals("true")) {
             initializeTestBaseSetup(browser, appURL);
         } else {
             setup(local, browser, appURL, platform, version);
@@ -120,7 +120,6 @@ public class TestBase {
     }
 
 
-
     //Next part is for grid
 
     public ThreadLocal<RemoteWebDriver> driverRemote = new ThreadLocal<>();
@@ -137,19 +136,9 @@ public class TestBase {
         int height = (int) toolkit.getScreenSize().getHeight();
         getDriver().manage().window().setSize(new Dimension(width, height));*/
 
-        Toolkit toolkit;
-        if (browser.equals("chrome")) {
-            toolkit = Toolkit.getDefaultToolkit();
-            /*int width = (int) toolkit.getScreenSize().getWidth();
-            int height = (int) toolkit.getScreenSize().getHeight();*/
-            getDriver(local).manage().window().setSize(new Dimension(1280, 960));
-            getDriver(local).navigate().to(appURL);
-            getDriver(local).manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        } else {
-            getDriver(local).manage().window().maximize();
-            getDriver(local).navigate().to(appURL);
-            getDriver(local).manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        }
+        getDriver(local).manage().window().maximize();
+        getDriver(local).navigate().to(appURL);
+        getDriver(local).manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
 
