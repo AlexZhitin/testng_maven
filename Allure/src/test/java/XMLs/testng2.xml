@@ -25,12 +25,12 @@
                     <include name="check_gifts_section_title"/>
                 </methods>
             </class>
-           <!-- <class name="Tests.SomeTest2">
+            <class name="Tests.SomeTest2">
                 <methods>
                     <include name="profile_is_displayed"/>
                     <include name="check_gifts_section_title"/>
                 </methods>
-            </class>-->
+            </class>
         </classes>
     </test>
 
