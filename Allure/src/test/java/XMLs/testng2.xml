@@ -10,7 +10,7 @@
 
 
     <parameter name="appURL" value="https://hotline.ua"/>
-    <parameter name="local" value="false"/>
+    <parameter name="local" value="true"/>
 
 
 
