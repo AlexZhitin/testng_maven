@@ -29,8 +29,8 @@ public class SomeTest extends TestBase {
     private String sectionGifts = "gifts";
     private String mobileSectionPageTitleRu = "Смартфоны, Телефоны";
     private String mobileSectionPageTitleUa = "Смартфони, Телефони";
-    private String giftsSectionPageTitleRu = "Подарки к праздникам";
-    private String giftsSectionPageTitleUa = "Подарунки";
+    private String giftsSectionPageTitleRu = "Подарки к праздника";
+    private String giftsSectionPageTitleUa = "Подарунк";
 
     @Parameters({"local"})
     @BeforeMethod

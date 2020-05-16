@@ -22,7 +22,7 @@
             <class name="Tests.SomeTest">
                 <methods>
                     <include name="profile_is_displayed"/>
-                    <!--<include name="check_gifts_section_title"/>-->
+                    <include name="check_gifts_section_title"/>
                 </methods>
             </class>
            <!-- <class name="Tests.SomeTest2">
