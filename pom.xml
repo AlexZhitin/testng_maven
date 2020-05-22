@@ -17,6 +17,7 @@
         <module>GridTestng</module>
         <module>Hotline</module>
         <module>Allure</module>
+        <module>sample_project</module>
     </modules>
 
     <dependencies>
