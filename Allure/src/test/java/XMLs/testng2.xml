@@ -19,18 +19,18 @@
         <parameter name="platform" value="linux"/>
         <parameter name="version" value="81"/>
         <classes>
-            <class name="Tests.SomeTest">
+            <class name="Tests.SomeTest3">
+                <methods>
+                    <include name="profile_is_displayed"/>
+                   <!-- <include name="check_gifts_section_title"/>-->
+                </methods>
+            </class>
+           <!-- <class name="Tests.SomeTest2">
                 <methods>
                     <include name="profile_is_displayed"/>
                     <include name="check_gifts_section_title"/>
                 </methods>
-            </class>
-            <class name="Tests.SomeTest2">
-                <methods>
-                    <include name="profile_is_displayed"/>
-                    <include name="check_gifts_section_title"/>
-                </methods>
-            </class>
+            </class>-->
         </classes>
     </test>
 

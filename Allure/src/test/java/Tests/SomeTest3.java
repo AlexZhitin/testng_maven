@@ -1,5 +1,6 @@
 package Tests;
 
+import Base.AllureTestListener;
 import Base.TestBase;
 import Helper.Utils;
 import Pages.HomePage;
@@ -82,7 +83,9 @@ public class SomeTest3 extends TestBase {
 
   public void profile_is_displayed() {
 
-    String error = "Profile is not displayed on the home page";
+    String error = "Profile is not displayed on the home page....";
+
+     /* Assert.assertEquals(home_page.profileIsDisplayed(), true, AllureTestListener.saveTextLog(error));   This is an alternative to if else*/
 
     if (home_page.profileIsDisplayed()) {
       Assert.assertTrue(true);
