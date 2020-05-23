@@ -1,6 +1,3 @@
-import org.junit.After;
-import org.junit.Before;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -9,35 +6,34 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
-
-public class Login {
+public class LoginAgain {
 
     WebDriver driver;
-    WebDriverWait wait;
 
-
-    @FindBy(xpath = "//*[@name='username']")
+    @FindBy(xpath = "//*[@name ='username']")
     WebElement fieldUsername;
 
-    @FindBy(xpath = "//*[@name='password']")
+    @FindBy(xpath = "//*[@name ='password']")
     WebElement fieldPassword;
 
-    @FindBy(xpath = "//*[@value='login']")
-    WebElement submit;
+    @FindBy(xpath = "//*[@value ='login']")
+    WebElement button;
+
 
     String username = "aaa";
-    String password = "aaa";
-
-    String expectedUrl = "https://example.com/";
+    String password = "bbb";
     String url = "http://www.stealmylogin.com/demo.html";
-
+    String expectedURL = "https://example.com/";
 
     @BeforeMethod
 
-    public void SetUp() {
-        String driverPath = System.getProperty("user.dir") + "/src/main/resources/chromedriver.exe";
+    public void setUp(){
+
+        String driverPath = "D:\\QA\\Selenium_projects\\testng_maven\\sample_project\\src\\main\\resources\\chromedriver.exe";
         System.setProperty("webdriver.chrome.driver", driverPath);
 
         driver = new ChromeDriver();
@@ -48,25 +44,22 @@ public class Login {
 
 
     @Test
-    public void login() {
-        /*wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOf(fieldUsername));*/
+    public void login(){
 
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.visibilityOf(fieldUsername));
         fieldUsername.sendKeys(username);
         fieldPassword.sendKeys(password);
-        submit.click();
+        button.click();
 
         driver.switchTo().alert().accept();
         driver.switchTo().alert().accept();
 
-
-        Assert.assertEquals(driver.getCurrentUrl(), expectedUrl, "Test failed");
+        Assert.assertEquals(driver.getCurrentUrl(), expectedURL, "Didn't login");
     }
 
     @AfterMethod
-
-    public void tearDown() {
+    public void tearDown(){
         driver.quit();
     }
 }
-
