@@ -129,7 +129,7 @@ public class TestBase {
 
     public void setup(String local, String browser, String appURL, String platform, String version) throws MalformedURLException, InterruptedException {
         //Set Browser to ThreadLocalMap
-        driverRemote.set(new RemoteWebDriver(new URL("http://172.18.0.2:4444/wd/hub"), capabilityFactory.getCapabilities(platform, browser, version)));
+        driverRemote.set(new RemoteWebDriver(new URL("http://192.168.1.2:4444/wd/hub"), capabilityFactory.getCapabilities(platform, browser, version)));
 
         /*getDriver().manage().window().maximize();*/
        /* Toolkit toolkit = Toolkit.getDefaultToolkit();
