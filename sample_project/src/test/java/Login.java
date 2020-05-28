@@ -34,11 +34,29 @@ public class Login {
     String url = "http://www.stealmylogin.com/demo.html";
 
 
+    public void type(WebElement field, String text) {
+        try {
+            field.sendKeys(text);
+        } catch (Throwable e) {
+            System.out.println(e);
+        }
+    }
+
+    public void wait(WebElement element, int seconds) {
+        try {
+            wait = new WebDriverWait(driver, 10);
+            wait.until(ExpectedConditions.visibilityOf(element));
+        } catch (Throwable e) {
+            System.out.println(e);
+        }
+    }
+
+
     @BeforeMethod
 
     public void SetUp() {
-        String driverPath = System.getProperty("user.dir") + "/src/main/resources/chromedriver.exe";
-        System.setProperty("webdriver.chrome.driver", driverPath);
+
+        System.setProperty("webdriver.chrome.driver", "D:\\QA\\Selenium_projects\\testng_maven\\Allure\\src\\main\\resources\\chromedriver.exe");
 
         driver = new ChromeDriver();
         driver.get(url);
@@ -51,16 +69,21 @@ public class Login {
     public void login() {
         /*wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOf(fieldUsername));*/
+        wait(fieldUsername, 10);
+        type(fieldUsername, username);
 
-        fieldUsername.sendKeys(username);
+        wait(fieldPassword, 10);
         fieldPassword.sendKeys(password);
+
+        wait(submit, 10);
         submit.click();
 
         driver.switchTo().alert().accept();
         driver.switchTo().alert().accept();
 
-
         Assert.assertEquals(driver.getCurrentUrl(), expectedUrl, "Test failed");
+
+
     }
 
     @AfterMethod
