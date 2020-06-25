@@ -6,10 +6,7 @@ import Helper.Utils;
 import Pages.HomePage;
 import Pages.LoginPage;
 import Pages.MobilePage;
-import io.qameta.allure.Description;
-import io.qameta.allure.Severity;
-import io.qameta.allure.SeverityLevel;
-import io.qameta.allure.Story;
+import io.qameta.allure.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
@@ -120,9 +117,7 @@ public class SomeTest extends TestBase {
 
     public void invalid_login(String email, String password) {
 
-
         String error = "Error wasn't shown";
-
         home_page.clickProfileToLogin();
         login_page.typeEmail(email);
         login_page.typePassword(password);
