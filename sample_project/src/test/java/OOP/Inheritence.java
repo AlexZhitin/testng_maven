@@ -11,7 +11,7 @@ public class Inheritence {
 
     static class Child extends Super{
         public static void main(String[] args){
-            Child obj = new Child();
+            Super obj = new Super();
             obj.superMethod();
         }
     }
