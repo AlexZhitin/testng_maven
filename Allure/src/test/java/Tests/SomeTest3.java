@@ -81,7 +81,7 @@ public class SomeTest3 extends TestBase {
   @Description("Testcase: verify if profile is displayed")
   @Story("Story: to check is profiele is available on the home page")
 
-  //test
+  //test2
   public void profile_is_displayed() {
 
     String error = "Profile is not displayed on the home page....";
