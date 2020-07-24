@@ -3,6 +3,7 @@ package Tests;
 import Base.TestBase;
 import Helper.Utils;
 import Pages.HomePage;
+import Pages.LoginPage;
 import Pages.MobilePage;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
@@ -16,79 +17,64 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class SomeTest2 extends TestBase {
-  private WebDriver driver;
-  HomePage home_page;
-  MobilePage mobile_page;
-
-  private String sectionMobile = "mobile";
-  private String sectionGifts = "gifts";
-  private String mobileSectionPageTitleRu = "Смартфоны, Телефоны";
-  private String mobileSectionPageTitleUa = "Смартфони, Телефони";
-  private String giftsSectionPageTitleRu = "Подарки к праздникам";
-  private String giftsSectionPageTitleUa = "Подарунки";
+    private WebDriver driver;
+    HomePage home_page;
+    MobilePage mobile_page;
+    LoginPage login_page;
 
 
+    private String sectionMobile = "mobile";
+    private String sectionGifts = "gifts";
+    private String mobileSectionPageTitleRu = "Смартфоны, Телефоны";
+    private String mobileSectionPageTitleUa = "Смартфони, Телефони";
+    private String giftsSectionPageTitleRu = "Подарки к праздника";
+    private String giftsSectionPageTitleUa = "Подарунк";
 
-  @Parameters({"local"})
-  @BeforeMethod
-  public void setUp(String local) {
-    driver = getDriver(local);
-    home_page = PageFactory.initElements(driver, HomePage.class);
-    mobile_page = PageFactory.initElements(driver, MobilePage.class);
-  }
-
-  @Test (description = "Testcase: verify mobile page title")
-  @Severity(SeverityLevel.NORMAL)
-  @Description("Testcase: verify mobile page title")
-  @Story("Story: to check mobile page title")
-
-  public void check_mobile_section_title() {
-
-    String error = "Wrong page title or it's not showing";
-
-    home_page.clickSection(sectionMobile);
-
-    if (mobile_page.getPageTitleText().equals(mobileSectionPageTitleRu) || mobile_page.getPageTitleText().equals(mobileSectionPageTitleUa)) {
-      Assert.assertTrue(true);
-    } else {
-      Utils.addErrorToAllureReport(error);
-      Assert.fail();
+    @Parameters({"local"})
+    @BeforeMethod
+    public void setUp(String local) {
+        driver = getDriver(local);
+        home_page = new HomePage(driver);
+        mobile_page = new MobilePage(driver);
+        login_page = new LoginPage(driver);
     }
-  }
 
-  @Test(description = "Testcase: verify gifts page title")
-  @Severity(SeverityLevel.NORMAL)
-  @Description("Testcase: verify gifts page title")
-  @Story("Story: to check gifts page title")
 
-  public void check_gifts_section_title() {
+    @Test(description = "Testcase: verify mobile page title")
+    @Severity(SeverityLevel.NORMAL)
+    @Description("Testcase: verify mobile page title")
+    @Story("Story: to check mobile page title")
 
-    String error = "Wrong page title or it's not showing";
+    public void check_mobile_section_title() {
 
-    home_page.clickSection(sectionGifts);
+        home_page.clickSection(sectionMobile);
 
-    if (mobile_page.getPageTitleText().equals(giftsSectionPageTitleRu) || mobile_page.getPageTitleText().equals(giftsSectionPageTitleUa)) {
-      Assert.assertTrue(true);
-    } else {
-      Utils.addErrorToAllureReport(error);
-      Assert.fail();
+        home_page.clickSection(sectionMobile);
+
+        Assert.assertTrue(mobile_page.getPageTitleText().equals(mobileSectionPageTitleRu) || mobile_page.getPageTitleText()
+                .equals(mobileSectionPageTitleUa), "Wrong page title or it's not showing");
     }
-  }
 
-  @Test(description = "Testcase: check if profile is displayed")
-  @Severity(SeverityLevel.NORMAL)
-  @Description("Testcase: verify if profile is displayed")
-  @Story("Story: to check is profiele is available on the home page")
+    @Test(description = "Testcase: verify gifts page title")
+    @Severity(SeverityLevel.NORMAL)
+    @Description("Testcase: verify gifts page title")
+    @Story("Story: to check gifts page title")
 
-  public void profile_is_displayed() {
+    public void check_gifts_section_title() {
 
-    String error = "Profile is not displayed on the home page";
+        home_page.clickSection(sectionGifts);
 
-    if (home_page.profileIsDisplayed()) {
-      Assert.assertTrue(true);
-    } else{
-      Utils.addErrorToAllureReport(error);
-      Assert.fail();
+        Assert.assertTrue(mobile_page.getPageTitleText().equals(giftsSectionPageTitleRu)
+                || mobile_page.getPageTitleText().equals(giftsSectionPageTitleUa), "Gifts page title is wrong");
     }
-  }
+
+    @Test(description = "Testcase: check if profile is displayed")
+    @Severity(SeverityLevel.NORMAL)
+    @Description("Testcase: verify if profile is displayed")
+    @Story("Story: to check is profiele is available on the home page")
+
+    public void profile_is_displayed() {
+
+        Assert.assertTrue(home_page.profileIsDisplayed(), "Profile is not displayed on the home page");
+    }
 }

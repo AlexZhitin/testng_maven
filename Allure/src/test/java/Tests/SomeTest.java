@@ -27,15 +27,15 @@ public class SomeTest extends TestBase {
     private String mobileSectionPageTitleRu = "Смартфоны, Телефоны";
     private String mobileSectionPageTitleUa = "Смартфони, Телефони";
     private String giftsSectionPageTitleRu = "Подарки к праздника";
-    private String giftsSectionPageTitleUa = "Подарунк";
+    private String giftsSectionPageTitleUa = "Подарунки";
 
     @Parameters({"local"})
     @BeforeMethod
     public void setUp(String local) {
         driver = getDriver(local);
-        home_page = PageFactory.initElements(driver, HomePage.class);
-        mobile_page = PageFactory.initElements(driver, MobilePage.class);
-        login_page = PageFactory.initElements(driver, LoginPage.class);
+        home_page = new HomePage(driver);
+        mobile_page = new MobilePage(driver);
+        login_page = new LoginPage(driver);
     }
 
     @Test(description = "Testcase: verify mobile page title")
@@ -45,16 +45,11 @@ public class SomeTest extends TestBase {
 
     public void check_mobile_section_title() {
 
-        String error = "Wrong page title or it's not showing";
-
         home_page.clickSection(sectionMobile);
 
-        if (mobile_page.getPageTitleText().equals(mobileSectionPageTitleRu) || mobile_page.getPageTitleText().equals(mobileSectionPageTitleUa)) {
-            Assert.assertTrue(true);
-        } else {
-            Utils.addErrorToAllureReport(error);
-            Assert.fail();
-        }
+        Assert.assertTrue(mobile_page.getPageTitleText().equals(mobileSectionPageTitleRu) || mobile_page.getPageTitleText()
+                .equals(mobileSectionPageTitleUa), "Wrong page title or it's not showing");
+
     }
 
     @Test(description = "Testcase: verify gifts page title")
@@ -64,16 +59,11 @@ public class SomeTest extends TestBase {
 
     public void check_gifts_section_title() {
 
-        String error = "Wrong page title or it's not showing";
 
         home_page.clickSection(sectionGifts);
 
-        if (mobile_page.getPageTitleText().equals(giftsSectionPageTitleRu) || mobile_page.getPageTitleText().equals(giftsSectionPageTitleUa)) {
-            Assert.assertTrue(true);
-        } else {
-            Utils.addErrorToAllureReport(error);
-            Assert.fail();
-        }
+        Assert.assertTrue(mobile_page.getPageTitleText().equals(giftsSectionPageTitleRu)
+                || mobile_page.getPageTitleText().equals(giftsSectionPageTitleUa), "Gifts page title is wrong");
     }
 
     @Test(description = "Testcase: check if profile is displayed")
@@ -82,15 +72,7 @@ public class SomeTest extends TestBase {
     @Story("Story: to check is profiele is available on the home page")
 
     public void profile_is_displayed() {
-
-        String error = "Profile is not displayed on the home page";
-
-        if (home_page.profileIsDisplayed()) {
-            Assert.assertTrue(true);
-        } else {
-            Utils.addErrorToAllureReport(error);
-            Assert.fail();
-        }
+        Assert.assertTrue(home_page.profileIsDisplayed(), "Profile is not displayed on the home page");
     }
 
     @Test(description = "", dataProviderClass = ExcelToDataProvider.class, dataProvider = "userData")
@@ -117,17 +99,13 @@ public class SomeTest extends TestBase {
 
     public void invalid_login(String email, String password) {
 
-        String error = "Error wasn't shown";
         home_page.clickProfileToLogin();
         login_page.typeEmail(email);
         login_page.typePassword(password);
         login_page.clickSubmit();
 
-        if (login_page.errorDisplayed()||login_page.errorMessageDisplayed()) {
-            Assert.assertTrue(true);
-        } else {
-            Utils.addErrorToAllureReport(error);
-            Assert.fail();
-        }
+
+        Assert.assertTrue(login_page.errorDisplayed() || login_page.errorMessageDisplayed(),"Error wasn't shown" );
+
     }
 }
