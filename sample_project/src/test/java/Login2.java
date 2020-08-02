@@ -72,7 +72,7 @@ public class Login2 {
             driver.switchTo().alert().accept();
         }
 
-        Assert.assertEquals(expectedURL, driver.getCurrentUrl(), "Test failed");
+        Assert.assertEquals(driver.getCurrentUrl(), expectedURL, "Test failed");
     }
 
     @AfterMethod
