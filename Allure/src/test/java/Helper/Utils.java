@@ -14,7 +14,7 @@ public class Utils {
             Waiters.waitVisibilityOfElement(element, driver);
             return element.isDisplayed();
         } catch (Throwable e) {
-            AllureTestListener.saveTextLog(e.toString());
+            addErrorToAllureReport(e.toString());
             System.out.println(e);
             return false;
         }
@@ -34,7 +34,7 @@ public class Utils {
                 } else {
                 }
         } catch (Throwable e) {
-            AllureTestListener.saveTextLog(e.toString());
+            addErrorToAllureReport(e.toString());
             System.out.println(e);
         }
     }
@@ -44,7 +44,7 @@ public class Utils {
             Waiters.waitVisibilityOfElement(element, driver);
             element.click();
         } catch (Throwable e) {
-            AllureTestListener.saveTextLog(e.toString());
+            addErrorToAllureReport(e.toString());
             System.out.println(e);
         }
     }
@@ -54,7 +54,7 @@ public class Utils {
             Waiters.waitVisibilityOfElement(element, driver);
             element.sendKeys(input);
         } catch (Throwable e) {
-            AllureTestListener.saveTextLog(e.toString());
+            addErrorToAllureReport(e.toString());
             System.out.println(e);
         }
     }
