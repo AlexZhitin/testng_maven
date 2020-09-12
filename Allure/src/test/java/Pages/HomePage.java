@@ -29,16 +29,16 @@ public class HomePage {
 
     @Step("Select the section \"{0}\" to open")
     public void clickSection(String sectionName) {
-        Utils.clickElementByClassAttribute(sections, sectionName, 10, driver);
+        Utils.clickElementByClassAttribute(sections, sectionName, driver);
     }
 
     @Step("Check if profile is displayed on the home page")
     public boolean profileIsDisplayed() {
-        return Utils.elementIsDisplayed(profile, 5, driver);
+        return Utils.elementIsDisplayed(profile,  driver);
     }
 
     @Step("Click profile to open the login screen")
     public void clickProfileToLogin() {
-        Utils.clickElement(profile, 5, driver);
+        Utils.clickElement(profile,  driver);
     }
 }

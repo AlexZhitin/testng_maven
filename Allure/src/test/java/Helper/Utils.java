@@ -9,9 +9,9 @@ import org.testng.Assert;
 import java.util.List;
 
 public class Utils {
-    public static boolean elementIsDisplayed(WebElement element, int time, WebDriver driver) {
+    public static boolean elementIsDisplayed(WebElement element, WebDriver driver) {
         try {
-            Waiters.waitVisibilityOfElement(element, time, driver);
+            Waiters.waitVisibilityOfElement(element, driver);
             return element.isDisplayed();
         } catch (Throwable e) {
             AllureTestListener.saveTextLog(e.toString());
@@ -25,9 +25,9 @@ public class Utils {
         System.out.println(error);
     }
 
-    public static void clickElementByClassAttribute(List<WebElement> elements, String attributeValue, int time, WebDriver driver) {
+    public static void clickElementByClassAttribute(List<WebElement> elements, String attributeValue, WebDriver driver) {
         try {
-            Waiters.waitVisibilityOfAllElements(elements, time, driver);
+            Waiters.waitVisibilityOfAllElements(elements, driver);
             for (WebElement i : elements)
                 if (i.getAttribute("class").contains(attributeValue)) {
                     i.click();
@@ -39,9 +39,9 @@ public class Utils {
         }
     }
 
-    public static void clickElement(WebElement element, int time, WebDriver driver) {
+    public static void clickElement(WebElement element, WebDriver driver) {
         try {
-            Waiters.waitVisibilityOfElement(element, time, driver);
+            Waiters.waitVisibilityOfElement(element, driver);
             element.click();
         } catch (Throwable e) {
             AllureTestListener.saveTextLog(e.toString());
@@ -49,9 +49,9 @@ public class Utils {
         }
     }
 
-    public static void input (WebElement element, int time, WebDriver driver, String input) {
+    public static void input (WebElement element, WebDriver driver, String input) {
         try {
-            Waiters.waitVisibilityOfElement(element, time, driver);
+            Waiters.waitVisibilityOfElement(element, driver);
             element.sendKeys(input);
         } catch (Throwable e) {
             AllureTestListener.saveTextLog(e.toString());

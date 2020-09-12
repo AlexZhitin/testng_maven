@@ -24,7 +24,7 @@ public class MobilePage {
     @Step("Getting page title")
     public String getPageTitleText() {
         try {
-            Waiters.waitVisibilityOfElement(pageTitle, 5, driver);
+            Waiters.waitVisibilityOfElement(pageTitle, driver);
             return pageTitle.getText();
         } catch (Throwable e) {
             Utils.addErrorToAllureReport(e.toString());

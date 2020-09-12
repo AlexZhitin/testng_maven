@@ -36,27 +36,27 @@ public class LoginPage {
 
     @Step("Put in the email")
     public void typeEmail(String email) {
-        Utils.input(inputEmail, 10, driver, email);
+        Utils.input(inputEmail, driver, email);
     }
 
     @Step("Put in the password")
     public void typePassword(String password) {
-        Utils.input(inputPassword, 10, driver, password);
+        Utils.input(inputPassword, driver, password);
     }
 
     @Step("Click submit")
     public void clickSubmit() {
-        Utils.clickElement(Submit, 10, driver);
+        Utils.clickElement(Submit, driver);
     }
 
     @Step("Check if error pop-up is displayed")
     public boolean errorDisplayed() {
-        return Utils.elementIsDisplayed(Error, 10, driver);
+        return Utils.elementIsDisplayed(Error, driver);
     }
 
     @Step("Check if error message is displayed")
     public boolean errorMessageDisplayed() {
-        return Utils.elementIsDisplayed(ErrorMessage, 10, driver);
+        return Utils.elementIsDisplayed(ErrorMessage, driver);
     }
 }
 
