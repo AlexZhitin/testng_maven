@@ -74,7 +74,7 @@ public class SomeTest2 extends TestBase {
     @Story("Story: to check is profiele is available on the home page")
 
     public void profile_is_displayed() {
-//some changes
+//some change
         Assert.assertTrue(home_page.profileIsDisplayed(), "Profile is not displayed on the home page");
     }
 }
