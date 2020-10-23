@@ -59,7 +59,7 @@ public class SomeTest2 extends TestBase {
     @Severity(SeverityLevel.NORMAL)
     @Description("Testcase: verify gifts page title")
     @Story("Story: to check gifts page title")
-
+//some test changes in master
     public void check_gifts_section_title() {
 
         home_page.clickSection(sectionGifts);
