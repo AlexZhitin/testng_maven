@@ -1,3 +1,4 @@
+/*
 package Stream;
 
 import org.openqa.selenium.WebDriver;
@@ -56,7 +57,8 @@ public class WindowHandlerStream {
                 .map(handler -> driver.switchTo().window(handler).getTitle())
                 .findFirst()
                 .orElseThrow(() -> {
-                    throw new RuntimeException("No such window");
+                    throw new RuntimeException("No Such Window");
                 });
     }
 }
+*/
